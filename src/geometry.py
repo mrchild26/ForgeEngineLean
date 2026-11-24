@@ -5,6 +5,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import NamedTuple
 
+from OCC.Core.APIHeaderSection import APIHeaderSection_MakeHeader
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.BRepAdaptor import BRepAdaptor_Surface
@@ -20,6 +21,7 @@ from OCC.Core.IFSelect import IFSelect_RetDone
 from OCC.Core.Message import Message_Fail, message
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
 from OCC.Core.STEPControl import STEPControl_AsIs, STEPControl_Reader, STEPControl_Writer
+from OCC.Core.TCollection import TCollection_HAsciiString
 from OCC.Core.TDF import TDF_Label, TDF_LabelSequence
 from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.TopAbs import TopAbs_FACE, TopAbs_SOLID
@@ -32,6 +34,7 @@ from OCC.Core.gp import gp_Ax2, gp_Dir, gp_Pnt
 
 BOUNDS_TOL_MM = 1e-5
 VOLUME_TOL_MM3 = 0.01
+STEP_TIMESTAMP = "2026-11-24T00:00:00"  # fixed FILE_NAME time stamp: re-running writes byte-identical STEP files
 
 
 def quiet_occt_messages():
@@ -338,7 +341,10 @@ def write_verified_step(path, placed_shapes):
     with TemporaryDirectory(dir=path.parent) as staging:
         staged = Path(staging) / path.name
         writer = STEPControl_Writer()
-        if writer.Transfer(compound, STEPControl_AsIs) != IFSelect_RetDone or writer.Write(str(staged)) != IFSelect_RetDone:
+        if writer.Transfer(compound, STEPControl_AsIs) != IFSelect_RetDone:
+            raise RuntimeError(f"Could not write {path}")
+        APIHeaderSection_MakeHeader(writer.Model()).SetTimeStamp(TCollection_HAsciiString(STEP_TIMESTAMP))
+        if writer.Write(str(staged)) != IFSelect_RetDone:
             raise RuntimeError(f"Could not write {path}")
         imported = read_step_solids(staged)
         expected = sorted(placed_shapes, key=placement_key)
