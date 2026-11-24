@@ -1,0 +1,4 @@
+# The original design from the source STEP (cached solids): the comparison base, verdict REFERENCE.
+case_id: original
+reference: true
+expected_verdict: REFERENCE

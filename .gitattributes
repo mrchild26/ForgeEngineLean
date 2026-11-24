@@ -1,0 +1,7 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+# CAD and cache files keep their exact bytes (the cache key is the source STEP's SHA-256)
+*.STEP binary
+*.step binary
+*.brep binary
+cache/** binary

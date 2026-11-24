@@ -1,0 +1,12 @@
+# Z travel of the original assembly, measured once by the old ForgeEngine repo's static collision sweep and copied
+# here so this repo stands alone (source: ForgeEngine/results/cache/z_travel_sweep.json, written 2026-11-24 02:52,
+# read-only). G6 carries this value to a case only while its proof conditions hold (src/fit_eval.py).
+source: ForgeEngine/results/cache/z_travel_sweep.json
+source_written: "2026-11-24 02:52"
+geometry_fingerprint: fe004e308b37aa61fa32f6573c0912c8c40caa4287899218222803735367fb4b  # old repo's fingerprint, not this repo's STEP hash
+method: >-
+  Static boolean sweep of the 76 Z-moving solids against 114 fixed items along native Z in 2 mm steps; the ZXVerbinder
+  solids were excluded from the cached sweep.
+up_mm: 84.0911795704385      # no collision up to the end of the swept range
+down_mm: 50.0                # collision-free; first collision at 52.0 mm: MotorHalter1 #1 against InduktivSensor #1
+travel_mm: 134.0911795704385 # up + down

@@ -1,0 +1,15 @@
+# Minimal pins, solvable on win-64, osx-arm64, osx-64 and linux-64 (conda-forge dry runs, 2026-11-24).
+# Running needs python, pythonocc-core, numpy and pyyaml; pytest only runs the tests.
+# novtk builds and OpenBLAS keep the download at 110-165 MB per platform (VTK/Qt or MKL are not used by the code).
+# Create: conda env create -f environment.yml   (or: mamba env create -f environment.yml)
+name: forge-cad
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pythonocc-core 8.0.1.* novtk*
+  - occt * novtk*
+  - libblas=*=*openblas
+  - numpy
+  - pyyaml
+  - pytest

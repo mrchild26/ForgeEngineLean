@@ -1,0 +1,12 @@
+# Cost model parameters that are not in rates.yaml. Read at runtime by src/cost_eval.py.
+machine: milling_3_axis              # key in rates.yaml machines
+# Removal rate, assumption: ~15% of the tool maker's 340 cm3/min full-slot value for a 10 mm 3-flute aluminium end mill
+# (Kyocera 3AFK, see results/manufacturing_review.md), to cover finishing passes, small tools and non-cutting moves;
+# the sensitivity table covers 10-340 cm3/min. (Until 2026-11-24 the default was 1000.)
+removal_rate_mm3_min: 50000          # 3-axis milling volume removal rate (assumption)
+facing_allowance_mm: 0               # added to the part thickness before choosing the plate (0 = plate usable as delivered)
+extra_setups_per_part: 0             # added to the measured setups of every made-part occurrence (e.g. 1 = a flip)
+material_key: "{material} plate"     # rates.yaml materials key; {material} = made_parts material
+blank: bounding box with the smallest approved plate thickness >= the part thickness (subassembly.yaml NP3)
+setups: one per unsigned cylindrical axis direction family of the part, at least one
+lot_size_source: subassembly.yaml production.lot_size (task_rule); a different rates.yaml value only prints a warning

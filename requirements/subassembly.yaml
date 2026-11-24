@@ -1,0 +1,188 @@
+# Requirements for the subassembly "Z axis and milling head" of MyCNC V4.
+#
+# READ THIS FIRST
+# Each value in this file has a source. There are five sources:
+#   published   = the author of MyCNC or a supplier gives the value
+#   measured    = measured in subassembly/Z_axis_and_milling_head.step
+#   calculated  = calculated from other values in this file; the formula is given
+#   assumption  = we selected the value for this task; it is not from the author
+#   task_rule   = a rule of this task
+#
+# The assumptions can be wrong, or more strict than necessary.
+# Examine each assumption before you use it.
+# You can change an assumption for your design improvement. If you do, give the reason
+# and the new value in EVALS.md. Your evals must then use the new value.
+# You must not change a value with the source published, measured or task_rule.
+#
+# Coordinates are in millimetres, in the coordinate system of the STEP file.
+# In that system, Z is the vertical direction and Y points from the spindle to the X axis.
+
+subassembly: Z axis and milling head
+function: >
+  The subassembly holds a spindle of 80 mm diameter, moves it 80 mm in Z,
+  and resists the cutting forces at the tool tip.
+
+production:
+  units_per_year: {value: 50, source: task_rule}
+  lot_size:       {value: 10, source: task_rule}
+
+made_parts:
+  note: >
+    You can change these 10 parts. All other parts in the STEP file are bought parts.
+    The part id is the name of the part in the STEP file.
+    The BOM of the author is at
+    https://github.com/mallemann/mycnc/blob/1d1c3bfd88175dc12630b08827f7c91e85e71be5/bom/v4-structured-bom.md
+    (positions 2 and 8). Ignore the prices in that BOM. Ignore the material "1060 Legierung".
+    It is a default value of the CAD system.
+  general_tolerance: {value: ISO 2768-m, source: assumption}
+  parts:
+    - {part_id: MotorHalterPlatteIsel, description: "Carriage plate",               quantity: 1, material: EN AW-5083, material_source: assumption}
+    - {part_id: MotorHalter1,          description: "Spindle clamp, rear half",     quantity: 2, material: EN AW-5083, material_source: assumption}
+    - {part_id: MotorHalter2,          description: "Spindle clamp, front half",    quantity: 2, material: EN AW-5083, material_source: assumption}
+    - {part_id: ZFuehrungsHalter,      description: "Z guide plate",                quantity: 1, material: EN AW-5083, material_source: published}
+    - {part_id: FestLagerHalterIsel,   description: "Fixed-bearing holder",         quantity: 1, material: EN AW-5083, material_source: published}
+    - {part_id: LosLagerHalterIsel,    description: "Floating-bearing holder",      quantity: 1, material: EN AW-5083, material_source: published}
+    - {part_id: FestLagerBlock,        description: "Bearing block",                quantity: 1, material: EN AW-5083, material_source: published}
+    - {part_id: SensorPlatteZ,         description: "Sensor plate",                 quantity: 1, material: EN AW-5083, material_source: published}
+    - {part_id: Nema23HalterFuss,      description: "Motor standoff",               quantity: 2, material: EN AW-5083, material_source: published}
+    - {part_id: ZXVerbinder,           description: "Connector, Z plate to X axis", quantity: 2, material: EN AW-5083, material_source: assumption}
+
+material_properties:
+  EN AW-5083:
+    elastic_modulus_MPa: {value: 70000, source: assumption}
+    yield_strength_MPa:  {value: 125,   source: assumption}
+    density_g_cm3:       {value: 2.66,  source: assumption}
+
+reference_points:
+  spindle_axis:
+    x_mm: {value: 667.9, source: measured}
+    y_mm: {value: 435.2, source: measured}
+  spindle_nose_z_mm:   {value: 98.0, source: measured}
+  tool_stick_out_mm:   {value: 30,   source: assumption}
+  tool_tip:
+    x_mm: {value: 667.9, source: measured}
+    y_mm: {value: 435.2, source: measured}
+    z_mm: {value: 68.0,  source: "calculated: 98.0 - 30"}
+
+load_cases:
+  - id: LC1_cutting_force
+    description: A horizontal cutting force at the tool tip, in each horizontal direction.
+    force_N: {value: 200, source: calculated}
+    directions: ["+X", "-X", "+Y", "-Y"]
+    applied_at: tool_tip
+    derivation:
+      spindle_power_W:    {value: 1500,  source: assumption}
+      spindle_speed_rpm:  {value: 24000, source: "published by suppliers of 80 mm spindles of the 1.5 kW class"}
+      torque_Nm:          {value: 0.60,  source: "calculated: 1500 / (2 * pi * 24000 / 60)"}
+      cutter_diameter_mm: {value: 6,     source: assumption}
+      force_N:            {value: 199,   source: "calculated: 0.60 / 0.003"}
+    note: This is the maximum force that the spindle can apply to a 6 mm cutter.
+
+  - id: LC2_crash
+    description: The Z motor pushes with its full torque against a blocked spindle.
+    force_N: {value: 6800, source: calculated}
+    directions: ["+Z", "-Z"]
+    applied_at: ball screw of the Z axis, along its axis
+    derivation:
+      motor_torque_Nm:  {value: 3,    source: "published: BOM of the author"}
+      screw_pitch_mm:   {value: 2.5,  source: "published: documentation of the author"}
+      screw_efficiency: {value: 0.9,  source: assumption}
+      force_N:          {value: 6786, source: "calculated: 2 * pi * 3 * 0.9 / 0.0025"}
+    note: The parts must not break. A permanent deformation is not permitted.
+
+limits:
+  tool_tip_deflection_LC1:
+    rule: The deflection of the changed design must not be more than 110% of the deflection of the original design.
+    source: assumption
+    note: Calculate the two values with the same model.
+  safety_factor_yield_LC1: {minimum: 2.0, source: assumption}
+  safety_factor_yield_LC2: {minimum: 1.2, source: assumption}
+  thread_engagement:
+    rule: The engaged thread length in aluminium must be 1.5 times the thread diameter or more.
+    source: assumption
+
+interfaces_that_must_not_change:
+  - id: IF1_spindle_clamp
+    description: The clamp bore for the spindle.
+    diameter_mm: {value: 80, source: measured}
+  - id: IF2_spindle_axis
+    description: The position of the spindle axis.
+    rule: No change in X. The axis can move in +Y, in the direction of the X axis, by a maximum of 10 mm.
+    source: assumption
+  - id: IF3_z_travel
+    description: The travel of the milling head in Z.
+    travel_mm: {value: 80, source: "published: working area 550 x 700 x 80 mm"}
+  - id: IF4_x_axis_carriages
+    description: The four carriages that connect the Z guide plate to the rails of the X axis.
+    carriage_centres_mm:
+      - {x: 626.4, y: 557.6, z: 172.0}
+      - {x: 709.6, y: 557.6, z: 172.0}
+      - {x: 626.4, y: 557.6, z: 252.0}
+      - {x: 709.6, y: 557.6, z: 252.0}
+    source: measured
+  - id: IF5_x_axis_ball_nut
+    description: The connection to the ball nut of the X axis (part GewindeMutter16x5).
+    nut_centre_mm: {x: 658.7, y: 613.3, z: 311.2}
+    source: measured
+
+bought_parts:
+  rule: >
+    You can change a bought part. Give the reason, the price and the source of the price
+    in EVALS.md. The changed design must still obey all other values in this file.
+  examples: [rails AR15, carriages ARC15FN, ball screw 12 x 2.5, stepper motor, spindle, flange bearings]
+  source: task_rule
+
+envelope:
+  rule: The changed subassembly must stay in this box.
+  min_mm: {x: 599.4, y: 375.2, z: 98.0}
+  max_mm: {x: 757.4, y: 633.2, z: 598.0}
+  size_mm: {x: 158.0, y: 258.0, z: 500.0}
+  source: "measured: the box of the original subassembly"
+
+environment:
+  description: A workshop, indoors, 10 to 35 degrees Celsius, with chips and a small quantity of lubricant.
+  source: assumption
+
+# The rules below do not come from the physics. They come from the market, the supply
+# and the transport. A changed design must obey them, the same as the load cases.
+non_physical_requirements:
+  market:
+    country: {value: "Germany, European Union", source: assumption}
+    context: >
+      EU machinery law applies to the full machine: Directive 2006/42/EC until 19 January 2027,
+      then Regulation (EU) 2023/1230. This task does not grade the full machine.
+    rules:
+      - id: NP1_lead_content
+        rule: Each material of a made part must contain 0.1% of lead by weight or less.
+        source: "assumption: we apply the lead limit of the RoHS Directive 2011/65/EU to all made parts"
+        note: >
+          Some free-machining aluminium alloys contain lead. The RoHS exemptions for lead in
+          aluminium alloys end between December 2026 and June 2027.
+      - id: NP2_metric_threads
+        rule: All threads and all fasteners must be ISO metric.
+        source: assumption
+
+  supply:
+    rules:
+      - id: NP3_stock_thickness
+        rule: >
+          If you make a part from a plate, use one of these plate thicknesses.
+          The part must not be thicker than the plate.
+        plate_thickness_mm: {value: [3, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30], source: assumption}
+        note: "measured: the original parts use plates of 3, 8 and 20 mm."
+
+  transport:
+    description: The supplier sends the assembled subassembly to the customer as one parcel.
+    source: assumption
+    rules:
+      - id: NP4_parcel_size
+        rule: The envelope plus the padding on each side must go into one parcel.
+        parcel_limit_mm: {value: [1200, 600, 600], source: "published: DHL Paket, Germany"}
+        padding_mm:      {value: 50, source: assumption}
+      - id: NP5_mass
+        rule: The total mass of the made parts must not be more than in the original design.
+        source: assumption
+        note: >
+          The mass limit of the parcel is 31.5 kg (published: DHL Paket, Germany). This file does not
+          give the mass of the bought parts, thus the rule is relative. Calculate the two values
+          from the volume in the STEP file and the density.

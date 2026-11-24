@@ -1,0 +1,2211 @@
+{
+ "case_id": "best",
+ "changed_parts": [
+  "ZXVerbinder",
+  "Nema 23 76x56",
+  "socket head cap screw_din_DIN 912 M8 x 80 --- 28N",
+  "socket head cap screw_din_DIN 912 M5 x 50 --- 22N"
+ ],
+ "design_value": 2,
+ "substitutions": [
+  "S1",
+  "S3",
+  "S4"
+ ],
+ "function": {
+  "summary": {
+   "formula": "failed = count(status == FAIL) + count(status == UNCHANGED and proof check != PASS)",
+   "inputs": {
+    "checks": {
+     "value": 7,
+     "unit": "count"
+    },
+    "unchanged_with_proof": {
+     "value": 2,
+     "unit": "count"
+    }
+   },
+   "result": {
+    "value": 0,
+    "unit": "count"
+   },
+   "threshold": {
+    "operator": "<=",
+    "value": 0,
+    "unit": "count"
+   },
+   "status": "PASS",
+   "reason": "function grader",
+   "failed_checks": []
+  },
+  "checks": {
+   "F1_connector_tear_out": {
+    "formula": "sqrt(3) * applied_load / (2 * clear_end_ligament * bearing_depth)",
+    "inputs": {
+     "applied_load": {
+      "value": 200,
+      "unit": "N"
+     },
+     "yield_strength": {
+      "value": 125,
+      "unit": "MPa"
+     },
+     "minimum_yield_safety_factor": {
+      "value": 2.0,
+      "unit": "1"
+     },
+     "bolt_shank_diameter": {
+      "value": 6.0,
+      "unit": "mm"
+     },
+     "clear_end_ligament": {
+      "value": 14.249999663270003,
+      "unit": "mm"
+     },
+     "hole_diameter": {
+      "value": 7.5,
+      "unit": "mm"
+     },
+     "bearing_depth": {
+      "value": 28.0,
+      "unit": "mm"
+     },
+     "section_width": {
+      "value": 20.0,
+      "unit": "mm"
+     }
+    },
+    "result": {
+     "value": 0.4340979570169279,
+     "unit": "MPa"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 62.5,
+     "unit": "MPa"
+    },
+    "status": "PASS",
+    "reason": "LC1 X drive reaction on one connector bolt; allowable = yield / SF_LC1. Not computable (e.g. a bore breaks out) = FAIL."
+   },
+   "F2_connector_bearing": {
+    "formula": "applied_load / (bolt_shank_diameter * bearing_depth)",
+    "inputs": {
+     "applied_load": {
+      "value": 200,
+      "unit": "N"
+     },
+     "yield_strength": {
+      "value": 125,
+      "unit": "MPa"
+     },
+     "minimum_yield_safety_factor": {
+      "value": 2.0,
+      "unit": "1"
+     },
+     "bolt_shank_diameter": {
+      "value": 6.0,
+      "unit": "mm"
+     },
+     "clear_end_ligament": {
+      "value": 14.249999663270003,
+      "unit": "mm"
+     },
+     "hole_diameter": {
+      "value": 7.5,
+      "unit": "mm"
+     },
+     "bearing_depth": {
+      "value": 28.0,
+      "unit": "mm"
+     },
+     "section_width": {
+      "value": 20.0,
+      "unit": "mm"
+     }
+    },
+    "result": {
+     "value": 1.1904761904761905,
+     "unit": "MPa"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 62.5,
+     "unit": "MPa"
+    },
+    "status": "PASS",
+    "reason": "LC1 X drive reaction on one connector bolt; allowable = yield / SF_LC1. Not computable (e.g. a bore breaks out) = FAIL."
+   },
+   "F3_connector_net_section": {
+    "formula": "applied_load / ((section_width - hole_diameter) * bearing_depth)",
+    "inputs": {
+     "applied_load": {
+      "value": 200,
+      "unit": "N"
+     },
+     "yield_strength": {
+      "value": 125,
+      "unit": "MPa"
+     },
+     "minimum_yield_safety_factor": {
+      "value": 2.0,
+      "unit": "1"
+     },
+     "bolt_shank_diameter": {
+      "value": 6.0,
+      "unit": "mm"
+     },
+     "clear_end_ligament": {
+      "value": 14.249999663270003,
+      "unit": "mm"
+     },
+     "hole_diameter": {
+      "value": 7.5,
+      "unit": "mm"
+     },
+     "bearing_depth": {
+      "value": 28.0,
+      "unit": "mm"
+     },
+     "section_width": {
+      "value": 20.0,
+      "unit": "mm"
+     }
+    },
+    "result": {
+     "value": 0.5714285714285714,
+     "unit": "MPa"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 62.5,
+     "unit": "MPa"
+    },
+    "status": "PASS",
+    "reason": "LC1 X drive reaction on one connector bolt; allowable = yield / SF_LC1. Not computable (e.g. a bore breaks out) = FAIL."
+   },
+   "F4_deflection_ratio_bound": {
+    "formula": "bound = max over directions of max(1, body_ratio [X only], max_contacts 1/lambda_min(G_case, G_original)); G = integral([1,x,z] outer [1,x,z] dA) over the connector/guide-plate contact; body_ratio = case/original connector-arm compliance",
+    "inputs": {
+     "occurrence_1.original.area": {
+      "value": 2524.4082041474003,
+      "unit": "mm^2"
+     },
+     "occurrence_1.original.x": {
+      "value": -1.3452749336626015e-11,
+      "unit": "mm^3"
+     },
+     "occurrence_1.original.z": {
+      "value": 636.1725123519349,
+      "unit": "mm^3"
+     },
+     "occurrence_1.original.xx": {
+      "value": 4061399.7593978015,
+      "unit": "mm^4"
+     },
+     "occurrence_1.original.xz": {
+      "value": -3.3902081800643993e-12,
+      "unit": "mm^4"
+     },
+     "occurrence_1.original.zz": {
+      "value": 87197.71499327032,
+      "unit": "mm^4"
+     },
+     "occurrence_1.case.area": {
+      "value": 2444.4082041474007,
+      "unit": "mm^2"
+     },
+     "occurrence_1.case.x": {
+      "value": 4.309575172485394e-10,
+      "unit": "mm^3"
+     },
+     "occurrence_1.case.z": {
+      "value": 636.1725123519311,
+      "unit": "mm^3"
+     },
+     "occurrence_1.case.xx": {
+      "value": 3696873.0927311387,
+      "unit": "mm^4"
+     },
+     "occurrence_1.case.xz": {
+      "value": 8.305555683372951e-11,
+      "unit": "mm^4"
+     },
+     "occurrence_1.case.zz": {
+      "value": 84531.04832660391,
+      "unit": "mm^4"
+     },
+     "occurrence_2.original.area": {
+      "value": 2524.4082041474003,
+      "unit": "mm^2"
+     },
+     "occurrence_2.original.x": {
+      "value": 1.7936999115501353e-11,
+      "unit": "mm^3"
+     },
+     "occurrence_2.original.z": {
+      "value": -636.1725123519349,
+      "unit": "mm^3"
+     },
+     "occurrence_2.original.xx": {
+      "value": 4061399.759397801,
+      "unit": "mm^4"
+     },
+     "occurrence_2.original.xz": {
+      "value": -4.0900065644336326e-11,
+      "unit": "mm^4"
+     },
+     "occurrence_2.original.zz": {
+      "value": 87197.71499327055,
+      "unit": "mm^4"
+     },
+     "occurrence_2.case.area": {
+      "value": 2444.4082041474007,
+      "unit": "mm^2"
+     },
+     "occurrence_2.case.x": {
+      "value": 2.442454442844367e-10,
+      "unit": "mm^3"
+     },
+     "occurrence_2.case.z": {
+      "value": -636.1725123519333,
+      "unit": "mm^3"
+     },
+     "occurrence_2.case.xx": {
+      "value": 3696873.0927311387,
+      "unit": "mm^4"
+     },
+     "occurrence_2.case.xz": {
+      "value": -2.018095980456924e-10,
+      "unit": "mm^4"
+     },
+     "occurrence_2.case.zz": {
+      "value": 84531.04832660391,
+      "unit": "mm^4"
+     },
+     "original_drive_force": {
+      "value": 200,
+      "unit": "N"
+     },
+     "original_arm_span": {
+      "value": 37.5,
+      "unit": "mm"
+     },
+     "original_eccentricity": {
+      "value": 29.0,
+      "unit": "mm"
+     },
+     "original_gross_area": {
+      "value": 560.0,
+      "unit": "mm^2"
+     },
+     "original_I_z": {
+      "value": 36586.666666666664,
+      "unit": "mm^4"
+     },
+     "original_E": {
+      "value": 70000,
+      "unit": "MPa"
+     },
+     "original_parallel_arms": {
+      "value": 4,
+      "unit": "count"
+     },
+     "case_drive_force": {
+      "value": 200,
+      "unit": "N"
+     },
+     "case_arm_span": {
+      "value": 37.5,
+      "unit": "mm"
+     },
+     "case_eccentricity": {
+      "value": 28.999999999997,
+      "unit": "mm"
+     },
+     "case_gross_area": {
+      "value": 560.0,
+      "unit": "mm^2"
+     },
+     "case_I_z": {
+      "value": 36586.666666666664,
+      "unit": "mm^4"
+     },
+     "case_E": {
+      "value": 70000,
+      "unit": "MPa"
+     },
+     "case_parallel_arms": {
+      "value": 4,
+      "unit": "count"
+     },
+     "body_ratio": {
+      "value": 0.999999999999808,
+      "unit": "1"
+     },
+     "bound_+X": {
+      "value": 1.0986040519982694,
+      "unit": "1"
+     },
+     "bound_-X": {
+      "value": 1.0986040519982694,
+      "unit": "1"
+     },
+     "bound_+Y": {
+      "value": 1.0986040519982694,
+      "unit": "1"
+     },
+     "bound_-Y": {
+      "value": 1.0986040519982694,
+      "unit": "1"
+     }
+    },
+    "result": {
+     "value": 1.0986040519982694,
+     "unit": "1"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 1.1,
+     "unit": "1"
+    },
+    "status": "PASS",
+    "reason": "Upper bound on the LC1 tool-tip deflection ratio for any linear-elastic model in which unchanged parts and joints keep their stiffness (closed, sticking, uniform contact). Threshold from the YAML rule text. A substitution must state why it is outside this model (UNCHANGED reasons of F5)."
+   },
+   "F5_LC1_assembly_yield": {
+    "formula": "SF = yield_strength / peak_equivalent_stress over the whole assembly",
+    "inputs": {
+     "applied_load": {
+      "value": 200,
+      "unit": "N"
+     },
+     "yield_strength": {
+      "value": 125,
+      "unit": "MPa"
+     }
+    },
+    "result": {
+     "value": null,
+     "unit": "1"
+    },
+    "threshold": {
+     "operator": ">=",
+     "value": 2.0,
+     "unit": "1"
+    },
+    "status": "UNCHANGED",
+    "reason": "Whole-assembly peak stress is not modelled (baseline finding). The changed part is graded by F1-F3.",
+    "proof": {
+     "checks": [
+      "G0",
+      "G3"
+     ],
+     "conditions": [],
+     "text": "G0: only the declared changes differ from the original. zxverbinder_trim: Bolt pattern, seats and ball-nut face are unchanged (G3), so the interface reactions (statics with an ideal axial X drive) and the loads of every other part are unchanged; the changed part itself is graded by F1-F3. S1: The Z motor hangs on the fixed bearing block, off the LC1 path from the tool tip to the X axis. S3: The M8 x 110 screws attach the spindle clamps to the carriage plate: the rigid clamp-to-plate connection that the LC1 statics assume. S4: The motor mounting screws are on the fixed bearing block, off the LC1 path.",
+     "holds": true
+    }
+   },
+   "F6_LC2_assembly_yield": {
+    "formula": "SF = yield_strength / peak_equivalent_stress over the whole assembly",
+    "inputs": {
+     "applied_load": {
+      "value": 2040.0,
+      "unit": "N"
+     },
+     "original_load": {
+      "value": 6800.0,
+      "unit": "N"
+     },
+     "yield_strength": {
+      "value": 125,
+      "unit": "MPa"
+     }
+    },
+    "result": {
+     "value": null,
+     "unit": "1"
+    },
+    "threshold": {
+     "operator": ">=",
+     "value": 1.2,
+     "unit": "1"
+    },
+    "status": "UNCHANGED",
+    "reason": "LC2 peak stress is not modelled (baseline finding).",
+    "proof": {
+     "checks": [
+      "G0"
+     ],
+     "conditions": [
+      {
+       "formula": "F_new = yaml_force * drive_scale * motor_torque / yaml_motor_torque; drive_scale = derived_force / yaml_derived_force (1 within the YAML's 0.5 N rounding); derived_force = 2*pi*yaml_motor_torque*screw_efficiency/(screw_pitch/1000) <= F_orig (the same formula with the YAML motor torque)",
+       "inputs": {
+        "motor_torque": {
+         "value": 0.9,
+         "unit": "Nm"
+        },
+        "yaml_motor_torque": {
+         "value": 3,
+         "unit": "Nm"
+        },
+        "screw_efficiency": {
+         "value": 0.9,
+         "unit": "1"
+        },
+        "screw_pitch": {
+         "value": 2.5,
+         "unit": "mm"
+        },
+        "yaml_force": {
+         "value": 6800,
+         "unit": "N"
+        },
+        "derived_force": {
+         "value": 6785.840131753953,
+         "unit": "N"
+        },
+        "yaml_derived_force": {
+         "value": 6786,
+         "unit": "N"
+        },
+        "drive_scale": {
+         "value": 1.0,
+         "unit": "1"
+        },
+        "F_orig": {
+         "value": 6800.0,
+         "unit": "N"
+        }
+       },
+       "result": {
+        "value": 2040.0,
+        "unit": "N"
+       },
+       "threshold": {
+        "operator": "<=",
+        "value": 6800.0,
+        "unit": "N"
+       },
+       "status": "PASS",
+       "reason": "S1 changes the motor torque; linear statics: every LC2 stress scales with the force."
+      }
+     ],
+     "text": "G0: only the declared changes differ from the original. zxverbinder_trim: LC2 acts along Z; the ideal axial X drive carries only X force, so the ZXVerbinder carries no LC2 load. S1: The LC2 load is reduced (condition F_new <= F_orig; linear statics scale every stress down) and no LC2-path made part changes. S3: The clamp-to-plate joint in the LC2 path becomes the attached joint that the statics assume; the LC2 force is unchanged. S4: The motor screws carry the motor reaction torque, not the LC2 axial force (the fixed bearing takes it); M5 x 65 attaches the motor as the statics assume.",
+     "holds": true
+    }
+   },
+   "F7_z_ball_nut_capacity": {
+    "formula": "safety_factor = catalog_static_axial_rating / axial_demand >= safety_factor_yield_LC2; axial_demand = yaml_force * drive_scale * motor_torque / yaml_motor_torque; drive_scale = derived_force / yaml_derived_force (1 within the YAML's 0.5 N rounding); derived_force = 2*pi*yaml_motor_torque*screw_efficiency/(screw_pitch/1000)",
+    "inputs": {
+     "motor_torque": {
+      "value": 0.9,
+      "unit": "Nm"
+     },
+     "yaml_motor_torque": {
+      "value": 3,
+      "unit": "Nm"
+     },
+     "screw_efficiency": {
+      "value": 0.9,
+      "unit": "1"
+     },
+     "screw_pitch": {
+      "value": 2.5,
+      "unit": "mm"
+     },
+     "yaml_force": {
+      "value": 6800,
+      "unit": "N"
+     },
+     "derived_force": {
+      "value": 6785.840131753953,
+      "unit": "N"
+     },
+     "yaml_derived_force": {
+      "value": 6786,
+      "unit": "N"
+     },
+     "drive_scale": {
+      "value": 1.0,
+      "unit": "1"
+     },
+     "nut_body_diameter": {
+      "value": 24.0,
+      "unit": "mm"
+     },
+     "nut_body_length": {
+      "value": 37.5,
+      "unit": "mm"
+     },
+     "axial_demand": {
+      "value": 2040.0,
+      "unit": "N"
+     },
+     "catalog_static_axial_rating": {
+      "value": 3000,
+      "unit": "N"
+     }
+    },
+    "result": {
+     "value": 1.4705882352941178,
+     "unit": "1"
+    },
+    "threshold": {
+     "operator": ">=",
+     "value": 1.2,
+     "unit": "1"
+    },
+    "status": "PASS",
+    "reason": "The static rating is the onset of permanent deformation of the nut, which LC2 forbids ('A permanent deformation is not permitted'), so it is treated as the nut's yield: rating / force >= safety_factor_yield_LC2. Motor torque from S1 (published datasheet). Rating: published: Isel 213412 0003 static axial rating, matched by the 24 x 37.5 mm nut envelope (rules/bought_parts.yaml). The author BOM names the nut 'Kugelgewindemutter 12x2,5mm, Einzelgangrueckfuehrung von Dold Mechatronic' (file DoldGewindeMutterIsel); the rating is from an Isel catalog entry matched by the envelope. Source to verify.",
+    "sources": [
+     "https://www.isel.com/fileadmin/user_upload/Kataloge/20260120_Catalog_Automation_en.pdf",
+     "https://github.com/mallemann/mycnc/blob/1d1c3bfd88175dc12630b08827f7c91e85e71be5/bom/v4-structured-bom.md"
+    ]
+   }
+  }
+ },
+ "fit": {
+  "summary": {
+   "formula": "failed = count(status == FAIL) + count(status == UNCHANGED and proof check != PASS)",
+   "inputs": {
+    "checks": {
+     "value": 18,
+     "unit": "count"
+    },
+    "unchanged_with_proof": {
+     "value": 2,
+     "unit": "count"
+    }
+   },
+   "result": {
+    "value": 0,
+    "unit": "count"
+   },
+   "threshold": {
+    "operator": "<=",
+    "value": 0,
+    "unit": "count"
+   },
+   "status": "PASS",
+   "reason": "fit grader",
+   "failed_checks": []
+  },
+  "checks": {
+   "G0_change_confined_to_rule": {
+    "formula": "count(ZXVerbinder occurrences with |left_inset - right_inset| > 1e-5, yz_drift > 1e-5 or inset < 0) + per substitution (geometry mismatch + quantity mismatch + mate clash) + undeclared_changed_parts",
+    "inputs": {
+     "occurrence_1.left_inset": {
+      "value": 2.0000000000001705,
+      "unit": "mm"
+     },
+     "occurrence_1.right_inset": {
+      "value": 1.9999999999998295,
+      "unit": "mm"
+     },
+     "occurrence_1.yz_drift": {
+      "value": 2.7071678232459817e-12,
+      "unit": "mm"
+     },
+     "occurrence_2.left_inset": {
+      "value": 2.0000000000000995,
+      "unit": "mm"
+     },
+     "occurrence_2.right_inset": {
+      "value": 1.9999999999998863,
+      "unit": "mm"
+     },
+     "occurrence_2.yz_drift": {
+      "value": 2.7071678232459817e-12,
+      "unit": "mm"
+     },
+     "S1.declared_parts": {
+      "value": 2,
+      "unit": "count"
+     },
+     "S1.quantity_mismatch": {
+      "value": 0,
+      "unit": "count"
+     },
+     "S1.geometry_mismatch": {
+      "value": 0,
+      "unit": "count"
+     },
+     "S1.shaft_tip_to_screw_journal_gap": {
+      "value": 3.5000000000000853,
+      "unit": "mm"
+     },
+     "S3.declared_parts": {
+      "value": 4,
+      "unit": "count"
+     },
+     "S3.quantity_mismatch": {
+      "value": 0,
+      "unit": "count"
+     },
+     "S3.geometry_mismatch": {
+      "value": 0,
+      "unit": "count"
+     },
+     "S4.declared_parts": {
+      "value": 4,
+      "unit": "count"
+     },
+     "S4.quantity_mismatch": {
+      "value": 0,
+      "unit": "count"
+     },
+     "S4.geometry_mismatch": {
+      "value": 0,
+      "unit": "count"
+     },
+     "undeclared_changed_parts": {
+      "value": 0,
+      "unit": "count"
+     }
+    },
+    "result": {
+     "value": 0,
+     "unit": "count"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0,
+     "unit": "count"
+    },
+    "status": "PASS",
+    "reason": "Basis of every UNCHANGED proof: only the declared parts differ from the original, each as declared.",
+    "declared_changes": {
+     "zxverbinder_trim": [
+      "ZXVerbinder",
+      "ZXVerbinder"
+     ],
+     "S1": [
+      "Nema 23 76x56",
+      "StepperWire"
+     ],
+     "S3": [
+      "socket head cap screw_din_DIN 912 M8 x 80 --- 28N"
+     ],
+     "S4": [
+      "socket head cap screw_din_DIN 912 M5 x 50 --- 22N"
+     ]
+    },
+    "undeclared_changed_parts": []
+   },
+   "G1_placed_copies": {
+    "formula": "max_i(max(|V(expected_i) - V(shared_i)|, |V(case_i) - V(shared_i)|)); expected_i = case_1 moved by the original placement of occurrence i",
+    "inputs": {
+     "valid_solids": {
+      "value": 2,
+      "unit": "count"
+     },
+     "occurrence_1.placed_copy_mismatch": {
+      "value": 0.0,
+      "unit": "mm^3"
+     },
+     "occurrence_2.placed_copy_mismatch": {
+      "value": 1.4551915228366852e-11,
+      "unit": "mm^3"
+     }
+    },
+    "result": {
+     "value": 1.4551915228366852e-11,
+     "unit": "mm^3"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0.01,
+     "unit": "mm^3"
+    },
+    "status": "PASS",
+    "reason": ""
+   },
+   "G2_removal_only": {
+    "formula": "max_i |V(case_i) - V(common(case_i, original_i))|",
+    "inputs": {
+     "occurrence_1.added_volume": {
+      "value": 1.4551915228366852e-11,
+      "unit": "mm^3"
+     },
+     "occurrence_2.added_volume": {
+      "value": 1.4551915228366852e-11,
+      "unit": "mm^3"
+     }
+    },
+    "result": {
+     "value": 1.4551915228366852e-11,
+     "unit": "mm^3"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0.01,
+     "unit": "mm^3"
+    },
+    "status": "PASS",
+    "reason": "Machinable from the original stock: material is only removed."
+   },
+   "G3_protected_core": {
+    "formula": "max_i max(|core_original - core_shared|, |core_case - core_shared|) inside the box around holes, bolt seats and ball-nut face",
+    "inputs": {
+     "occurrence_1.original_core": {
+      "value": 78825.60332737117,
+      "unit": "mm^3"
+     },
+     "occurrence_1.case_core": {
+      "value": 78825.6033273665,
+      "unit": "mm^3"
+     },
+     "occurrence_1.shared_core": {
+      "value": 78825.60332737117,
+      "unit": "mm^3"
+     },
+     "occurrence_2.original_core": {
+      "value": 78825.60332737117,
+      "unit": "mm^3"
+     },
+     "occurrence_2.case_core": {
+      "value": 78825.6033273665,
+      "unit": "mm^3"
+     },
+     "occurrence_2.shared_core": {
+      "value": 78825.60332737115,
+      "unit": "mm^3"
+     }
+    },
+    "result": {
+     "value": 4.6711647883057594e-09,
+     "unit": "mm^3"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0.01,
+     "unit": "mm^3"
+    },
+    "status": "PASS",
+    "reason": "Protected features of rules/zxverbinder_trim.yaml (IF4/IF5 bolt pattern)."
+   },
+   "G4_IF1_clamp_bore": {
+    "formula": "max |clamp_bore - required_diameter| over the clamp halves",
+    "inputs": {
+     "required_diameter": {
+      "value": 80,
+      "unit": "mm"
+     },
+     "bore_1": {
+      "value": 80.0,
+      "unit": "mm"
+     },
+     "bore_2": {
+      "value": 80.0,
+      "unit": "mm"
+     },
+     "bore_3": {
+      "value": 80.0,
+      "unit": "mm"
+     },
+     "bore_4": {
+      "value": 80.0,
+      "unit": "mm"
+     }
+    },
+    "result": {
+     "value": 0.0,
+     "unit": "mm"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 1e-05,
+     "unit": "mm"
+    },
+    "status": "PASS",
+    "reason": ""
+   },
+   "G5_IF2_spindle_axis": {
+    "formula": "count of moved or missing spindle occurrences",
+    "inputs": {
+     "original_occurrences": {
+      "value": 1,
+      "unit": "count"
+     },
+     "case_occurrences": {
+      "value": 1,
+      "unit": "count"
+     }
+    },
+    "result": {
+     "value": 0,
+     "unit": "count"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0,
+     "unit": "count"
+    },
+    "status": "PASS",
+    "reason": ""
+   },
+   "G7_IF4_x_carriages": {
+    "formula": "count of moved or missing X carriages",
+    "inputs": {
+     "original_occurrences": {
+      "value": 4,
+      "unit": "count"
+     },
+     "case_occurrences": {
+      "value": 4,
+      "unit": "count"
+     }
+    },
+    "result": {
+     "value": 0,
+     "unit": "count"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0,
+     "unit": "count"
+    },
+    "status": "PASS",
+    "reason": ""
+   },
+   "G8_IF5_x_ball_nut": {
+    "formula": "connector ball-nut pad: max_i max(|A_original - A_shared|, |A_case - A_shared|), if the X nut parts did not move",
+    "inputs": {
+     "original_occurrences": {
+      "value": 2,
+      "unit": "count"
+     },
+     "case_occurrences": {
+      "value": 2,
+      "unit": "count"
+     },
+     "nut_parts_moved": {
+      "value": 0,
+      "unit": "count"
+     },
+     "occurrence_1.pad_area_change": {
+      "value": 2.2737367544323206e-13,
+      "unit": "mm^2"
+     },
+     "occurrence_2.pad_area_change": {
+      "value": 2.2737367544323206e-13,
+      "unit": "mm^2"
+     }
+    },
+    "result": {
+     "value": 2.2737367544323206e-13,
+     "unit": "mm^2"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0.01,
+     "unit": "mm^2"
+    },
+    "status": "PASS",
+    "reason": ""
+   },
+   "G6_IF3_z_travel": {
+    "formula": "travel = original Z travel carried to the case (static collision sweep: up + down) >= IF3 travel_mm",
+    "inputs": {
+     "original_travel_up": {
+      "value": 84.0911795704385,
+      "unit": "mm"
+     },
+     "original_travel_down": {
+      "value": 50.0,
+      "unit": "mm"
+     },
+     "original_travel": {
+      "value": 134.0911795704385,
+      "unit": "mm"
+     },
+     "rail_coverage": {
+      "value": 138.6,
+      "unit": "mm"
+     },
+     "z_moving_parts": {
+      "value": 46,
+      "unit": "count"
+     }
+    },
+    "result": {
+     "value": 134.0911795704385,
+     "unit": "mm"
+    },
+    "threshold": {
+     "operator": ">=",
+     "value": 80,
+     "unit": "mm"
+    },
+    "status": "UNCHANGED",
+    "reason": "Carried from the original, measured once by ForgeEngine/results/cache/z_travel_sweep.json (2026-11-24 02:52); not recomputed here. Carried only while the proof conditions hold, otherwise not demonstrable (FAIL).",
+    "proof": {
+     "checks": [
+      "G0"
+     ],
+     "conditions": [
+      {
+       "formula": "min over the ZXVerbinder solids of the X/Y gap to the Z-moving-set box > 0",
+       "inputs": {
+        "occurrence_1.xy_gap": {
+         "value": 20.500000000000448,
+         "unit": "mm"
+        },
+        "occurrence_2.xy_gap": {
+         "value": 20.500000000000444,
+         "unit": "mm"
+        }
+       },
+       "result": {
+        "value": 20.500000000000444,
+        "unit": "mm"
+       },
+       "threshold": {
+        "operator": ">",
+        "value": 0,
+        "unit": "mm"
+       },
+       "status": "PASS",
+       "reason": ""
+      },
+      {
+       "formula": "growth of the Z-moving-set box (case vs original) over native axes",
+       "inputs": {
+        "z_moving_parts": {
+         "value": 46,
+         "unit": "count"
+        }
+       },
+       "result": {
+        "value": 0.0,
+        "unit": "mm"
+       },
+       "threshold": {
+        "operator": "<=",
+        "value": 1e-05,
+        "unit": "mm"
+       },
+       "status": "PASS",
+       "reason": ""
+      }
+     ],
+     "text": "G0: only the declared changes differ from the original. zxverbinder_trim: The changed solids are clear of the Z-moving set in X/Y (condition), so no Z clearance can change. S1: The motor is not in the Z-moving set (the moving-set box is unchanged, condition); the coupling and the 6.35 mm shaft interface are unchanged. S3: The longer screws end inside the carriage plate, so the Z-moving-set box is unchanged (condition). S4: The motor mount is not in the Z-moving set (the moving-set box is unchanged, condition).",
+     "holds": true
+    }
+   },
+   "G9_envelope": {
+    "formula": "min margin = min over axes of (case_min - envelope_min, envelope_max - case_max); case box in the YAML frame (native -> YAML rigid transform fitted to the IF4 carriage centres), tool solid excluded",
+    "inputs": {
+     "margin_min_x": {
+      "value": 0.05000000000006821,
+      "unit": "mm"
+     },
+     "margin_min_y": {
+      "value": 8.349999950011124,
+      "unit": "mm"
+     },
+     "margin_min_z": {
+      "value": 14.384769408923916,
+      "unit": "mm"
+     },
+     "margin_max_x": {
+      "value": 8.949999899999625,
+      "unit": "mm"
+     },
+     "margin_max_y": {
+      "value": 1.6499999499884552,
+      "unit": "mm"
+     },
+     "margin_max_z": {
+      "value": 40.5,
+      "unit": "mm"
+     },
+     "case_min_x": {
+      "value": 599.45,
+      "unit": "mm"
+     },
+     "case_min_y": {
+      "value": 383.5499999500111,
+      "unit": "mm"
+     },
+     "case_min_z": {
+      "value": 112.38476940892392,
+      "unit": "mm"
+     },
+     "case_max_x": {
+      "value": 748.4500001000004,
+      "unit": "mm"
+     },
+     "case_max_y": {
+      "value": 631.5500000500116,
+      "unit": "mm"
+     },
+     "case_max_z": {
+      "value": 557.5,
+      "unit": "mm"
+     },
+     "translation_x": {
+      "value": 664.0604666632702,
+      "unit": "mm"
+     },
+     "translation_y": {
+      "value": 569.7137759658689,
+      "unit": "mm"
+     },
+     "translation_z": {
+      "value": 302.5,
+      "unit": "mm"
+     },
+     "max_carriage_residual": {
+      "value": 5.684341886080802e-14,
+      "unit": "mm"
+     }
+    },
+    "result": {
+     "value": 0.05000000000006821,
+     "unit": "mm"
+    },
+    "threshold": {
+     "operator": ">=",
+     "value": 0,
+     "unit": "mm"
+    },
+    "status": "PASS",
+    "reason": "The envelope starts at the spindle nose (z 98); the tool is below it by definition, so the tool solid is excluded. Rotation [[1.0, -0.0, -0.0], [-0.0, -1.0, 0.0], [-0.0, 0.0, -1.0]]."
+   },
+   "G10_thread_engagement": {
+    "formula": "engagement_d = min over the screws of each threaded joint of clip(length - head_seat_to_thread, 0, thread_depth) / nominal_diameter; length = |tip - head_seat| along the screw axis; a tip beyond the thread's far end is not allowed (FAIL)",
+    "inputs": {
+     "rear_clamp_m8_1.length": {
+      "value": 109.9999999999995,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_1.head_seat_to_thread": {
+      "value": 92.00000000000001,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_1.thread_depth": {
+      "value": 20.000000000000057,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_1.nominal_diameter": {
+      "value": 8.0,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_1.engagement": {
+      "value": 17.99999999999949,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_2.length": {
+      "value": 109.9999999999995,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_2.head_seat_to_thread": {
+      "value": 92.00000000000001,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_2.thread_depth": {
+      "value": 20.000000000000057,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_2.nominal_diameter": {
+      "value": 8.0,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_2.engagement": {
+      "value": 17.99999999999949,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_3.length": {
+      "value": 110.00000000000028,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_3.head_seat_to_thread": {
+      "value": 91.99999999999979,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_3.thread_depth": {
+      "value": 20.000000000000057,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_3.nominal_diameter": {
+      "value": 8.0,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_3.engagement": {
+      "value": 18.000000000000497,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_4.length": {
+      "value": 110.00000000000028,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_4.head_seat_to_thread": {
+      "value": 91.99999999999979,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_4.thread_depth": {
+      "value": 20.000000000000057,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_4.nominal_diameter": {
+      "value": 8.0,
+      "unit": "mm"
+     },
+     "rear_clamp_m8_4.engagement": {
+      "value": 18.000000000000497,
+      "unit": "mm"
+     },
+     "motor_m5_1.length": {
+      "value": 65.00000000000284,
+      "unit": "mm"
+     },
+     "motor_m5_1.head_seat_to_thread": {
+      "value": 54.99999618530285,
+      "unit": "mm"
+     },
+     "motor_m5_1.thread_depth": {
+      "value": 19.5,
+      "unit": "mm"
+     },
+     "motor_m5_1.nominal_diameter": {
+      "value": 5.0,
+      "unit": "mm"
+     },
+     "motor_m5_1.engagement": {
+      "value": 10.000003814699994,
+      "unit": "mm"
+     },
+     "motor_m5_2.length": {
+      "value": 65.00000000000287,
+      "unit": "mm"
+     },
+     "motor_m5_2.head_seat_to_thread": {
+      "value": 54.99999618530288,
+      "unit": "mm"
+     },
+     "motor_m5_2.thread_depth": {
+      "value": 19.5,
+      "unit": "mm"
+     },
+     "motor_m5_2.nominal_diameter": {
+      "value": 5.0,
+      "unit": "mm"
+     },
+     "motor_m5_2.engagement": {
+      "value": 10.000003814699994,
+      "unit": "mm"
+     },
+     "motor_m5_3.length": {
+      "value": 65.00000000000293,
+      "unit": "mm"
+     },
+     "motor_m5_3.head_seat_to_thread": {
+      "value": 54.99999618530293,
+      "unit": "mm"
+     },
+     "motor_m5_3.thread_depth": {
+      "value": 19.5,
+      "unit": "mm"
+     },
+     "motor_m5_3.nominal_diameter": {
+      "value": 5.0,
+      "unit": "mm"
+     },
+     "motor_m5_3.engagement": {
+      "value": 10.000003814699994,
+      "unit": "mm"
+     },
+     "motor_m5_4.length": {
+      "value": 65.0000000000029,
+      "unit": "mm"
+     },
+     "motor_m5_4.head_seat_to_thread": {
+      "value": 54.999996185302905,
+      "unit": "mm"
+     },
+     "motor_m5_4.thread_depth": {
+      "value": 19.5,
+      "unit": "mm"
+     },
+     "motor_m5_4.nominal_diameter": {
+      "value": 5.0,
+      "unit": "mm"
+     },
+     "motor_m5_4.engagement": {
+      "value": 10.000003814699994,
+      "unit": "mm"
+     }
+    },
+    "result": {
+     "value": 2.0000007629399987,
+     "unit": "d"
+    },
+    "threshold": {
+     "operator": ">=",
+     "value": 1.5,
+     "unit": "d"
+    },
+    "status": "PASS",
+    "reason": "Joints: rear_clamp_m8 (4 screws), motor_m5 (4 screws) into aluminium threads; the other thread joints are not evaluated (README notes). The original fails too: the M8 x 80 end 12.0 mm and the M5 x 50 end 5.0 mm short of their threads (baseline finding)."
+   },
+   "G11_NP1_lead": {
+    "formula": "max over made-part materials of the specification lead bound",
+    "inputs": {
+     "lead_bound.EN AW-5083": {
+      "value": 0.05,
+      "unit": "% mass"
+     }
+    },
+    "result": {
+     "value": 0.05,
+     "unit": "% mass"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0.1,
+     "unit": "% mass"
+    },
+    "status": "PASS",
+    "reason": "EN 573-3 'other' (each) bound, which includes Pb when no Pb limit is listed (stockist data sheet).",
+    "sources": [
+     "https://my.bikar.com/en_US/products/304_021-304-021-2"
+    ]
+   },
+   "G12_NP2_metric_threads": {
+    "formula": "fastener labels without an ISO metric designation (M + diameter)",
+    "inputs": {
+     "fastener_labels": {
+      "value": 88,
+      "unit": "count"
+     },
+     "metric_labels": {
+      "value": 88,
+      "unit": "count"
+     }
+    },
+    "result": {
+     "value": 0,
+     "unit": "count"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0,
+     "unit": "count"
+    },
+    "status": "UNCHANGED",
+    "reason": "Thread forms are not in the CAD export; all exported fastener labels are metric.",
+    "proof": {
+     "checks": [
+      "G0",
+      "G3"
+     ],
+     "conditions": [],
+     "text": "G0: only the declared changes differ from the original. zxverbinder_trim: The trim adds or removes no fastener or thread (G3). S1: The motor keeps its four DIN 912 M5 screws (or S4); the substitution adds or removes no thread. S3: DIN 912 M8 x 110 is ISO metric (the fastener labels are counted). S4: DIN 912 M5 x 65 is ISO metric (the fastener labels are counted).",
+     "holds": true
+    }
+   },
+   "G13_NP3_stock": {
+    "formula": "count of made-part occurrences without an approved plate thickness >= part thickness",
+    "inputs": {
+     "ZFuehrungsHalter.1.thickness": {
+      "value": 20.0,
+      "unit": "mm"
+     },
+     "ZXVerbinder.2.thickness": {
+      "value": 20.0,
+      "unit": "mm"
+     },
+     "ZXVerbinder.3.thickness": {
+      "value": 20.0,
+      "unit": "mm"
+     },
+     "LosLagerHalterIsel.4.thickness": {
+      "value": 20.0,
+      "unit": "mm"
+     },
+     "FestLagerHalterIsel.5.thickness": {
+      "value": 20.0,
+      "unit": "mm"
+     },
+     "FestLagerBlock.6.thickness": {
+      "value": 19.5,
+      "unit": "mm"
+     },
+     "SensorPlatte.7.thickness": {
+      "value": 3.0,
+      "unit": "mm"
+     },
+     "MotorHalterPlatteIsel.8.thickness": {
+      "value": 20.0,
+      "unit": "mm"
+     },
+     "MotorHalter1.9.thickness": {
+      "value": 20.0,
+      "unit": "mm"
+     },
+     "MotorHalter2.10.thickness": {
+      "value": 20.0,
+      "unit": "mm"
+     },
+     "MotorHalter1.11.thickness": {
+      "value": 20.0,
+      "unit": "mm"
+     },
+     "MotorHalter2.12.thickness": {
+      "value": 20.0,
+      "unit": "mm"
+     },
+     "Nema23HalterFuss.13.thickness": {
+      "value": 8.0,
+      "unit": "mm"
+     },
+     "Nema23HalterFuss.14.thickness": {
+      "value": 8.0,
+      "unit": "mm"
+     }
+    },
+    "result": {
+     "value": 0,
+     "unit": "count"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0,
+     "unit": "count"
+    },
+    "status": "PASS",
+    "reason": ""
+   },
+   "G14_NP4_parcel": {
+    "formula": "max(sorted(native_spans + 2 * padding) - sorted(parcel_limits))",
+    "inputs": {
+     "padded_span_1": {
+      "value": 249.00000010000034,
+      "unit": "mm"
+     },
+     "padded_span_2": {
+      "value": 348.0000001000005,
+      "unit": "mm"
+     },
+     "padded_span_3": {
+      "value": 588.874338894257,
+      "unit": "mm"
+     },
+     "limit_1": {
+      "value": 600,
+      "unit": "mm"
+     },
+     "limit_2": {
+      "value": 600,
+      "unit": "mm"
+     },
+     "limit_3": {
+      "value": 1200,
+      "unit": "mm"
+     }
+    },
+    "result": {
+     "value": -251.99999989999952,
+     "unit": "mm"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0,
+     "unit": "mm"
+    },
+    "status": "PASS",
+    "reason": ""
+   },
+   "G15_NP5_mass": {
+    "formula": "case_mass - original_mass; mass = sum(volume * density * 1e-6) over made parts",
+    "inputs": {
+     "original_mass": {
+      "value": 4.912320101174831,
+      "unit": "kg"
+     },
+     "case_mass": {
+      "value": 4.900403301174807,
+      "unit": "kg"
+     }
+    },
+    "result": {
+     "value": -0.011916800000024708,
+     "unit": "kg"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0,
+     "unit": "kg"
+    },
+    "status": "PASS",
+    "reason": ""
+   },
+   "G16_quantities": {
+    "formula": "sum over made parts of |count - quantity| (original + case)",
+    "inputs": {
+     "original_deviation": {
+      "value": 0,
+      "unit": "count"
+     },
+     "case_deviation": {
+      "value": 0,
+      "unit": "count"
+     }
+    },
+    "result": {
+     "value": 0,
+     "unit": "count"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0,
+     "unit": "count"
+    },
+    "status": "PASS",
+    "reason": ""
+   },
+   "G17_bought_parts": {
+    "formula": "count of changed bought-part occurrences without a declared substitution that gives a reason and both prices, each with a source URL",
+    "inputs": {
+     "changed_bought_parts": {
+      "value": 10,
+      "unit": "count"
+     },
+     "S1.price_from": {
+      "value": 28.7,
+      "unit": "USD/piece"
+     },
+     "S1.price_to": {
+      "value": 17.13,
+      "unit": "USD/piece"
+     },
+     "S1.prices_with_source_url": {
+      "value": 2,
+      "unit": "count"
+     },
+     "S3.price_from": {
+      "value": 0.3006,
+      "unit": "EUR/piece"
+     },
+     "S3.price_to": {
+      "value": 0.5458823529411765,
+      "unit": "EUR/piece"
+     },
+     "S3.prices_with_source_url": {
+      "value": 2,
+      "unit": "count"
+     },
+     "S4.price_from": {
+      "value": 0.06957983193277312,
+      "unit": "EUR/piece"
+     },
+     "S4.price_to": {
+      "value": 0.17980000000000002,
+      "unit": "EUR/piece"
+     },
+     "S4.prices_with_source_url": {
+      "value": 2,
+      "unit": "count"
+     }
+    },
+    "result": {
+     "value": 0,
+     "unit": "count"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 0,
+     "unit": "count"
+    },
+    "status": "PASS",
+    "reason": "subassembly.yaml bought_parts rule: a changed bought part needs its reason, price and price source.",
+    "sources": [
+     "https://www.omc-stepperonline.com/nema-23-bipolar-3nm-425oz-in-4-2a-57x57x114mm-4-wires-stepper-motor-cnc.html",
+     "https://www.omc-stepperonline.com/nema-23-bipolar-1-8deg-0-9-nm-127-5oz-in-2a-3-6v-57x57x52mm-4-wires.html",
+     "https://www.egger-online.de",
+     "https://www.egger-online.de/Zylinderschraube-DIN-912-m-Innensechskant-M-8-x-110-8-8-galvanisch-verzinkt-100-Stueck-2951901",
+     "https://www.egger-online.de",
+     "https://www.egger-online.de"
+    ]
+   }
+  }
+ },
+ "cost": {
+  "summary": {
+   "formula": "failed = count(status == FAIL) + count(status == UNCHANGED and proof check != PASS)",
+   "inputs": {
+    "checks": {
+     "value": 3,
+     "unit": "count"
+    },
+    "unchanged_with_proof": {
+     "value": 0,
+     "unit": "count"
+    }
+   },
+   "result": {
+    "value": 0,
+    "unit": "count"
+   },
+   "threshold": {
+    "operator": "<=",
+    "value": 0,
+    "unit": "count"
+   },
+   "status": "PASS",
+   "reason": "cost grader",
+   "failed_checks": []
+  },
+  "checks": {
+   "C1_changed_part_cost": {
+    "formula": "sum over ZXVerbinder occurrences of [cost = stock_mass * price + milling_time * (machine_rate + labour_rate)/60 + setups * setup_time * (machine_rate + labour_rate)/(60 * lot_size) - chip_mass * chip_price; stock_mass = L*W*T*density*1e-6; T = smallest approved plate >= part thickness + facing_allowance; setups = measured + extra_setups_per_part; chip_volume = L*W*T - solid_volume; milling_time = chip_volume / removal_rate]",
+    "inputs": {
+     "machine_rate": {
+      "value": 60,
+      "unit": "EUR/h"
+     },
+     "labour_rate": {
+      "value": 30,
+      "unit": "EUR/h"
+     },
+     "setup_time": {
+      "value": 40,
+      "unit": "min/setup"
+     },
+     "lot_size": {
+      "value": 10,
+      "unit": "parts/lot"
+     },
+     "removal_rate": {
+      "value": 50000,
+      "unit": "mm^3/min"
+     },
+     "density": {
+      "value": 2.66,
+      "unit": "g/cm^3"
+     },
+     "facing_allowance": {
+      "value": 0,
+      "unit": "mm"
+     },
+     "extra_setups_per_part": {
+      "value": 0,
+      "unit": "count/part"
+     },
+     "price": {
+      "value": 5.0,
+      "unit": "EUR/kg"
+     },
+     "chip_price": {
+      "value": 0.8,
+      "unit": "EUR/kg"
+     },
+     "occurrence_1.stock_length": {
+      "value": 133.0,
+      "unit": "mm"
+     },
+     "occurrence_1.stock_width": {
+      "value": 43.0,
+      "unit": "mm"
+     },
+     "occurrence_1.stock_thickness": {
+      "value": 20,
+      "unit": "mm"
+     },
+     "occurrence_1.solid_volume": {
+      "value": 92265.6033273665,
+      "unit": "mm^3"
+     },
+     "occurrence_1.stock_mass": {
+      "value": 0.3042508,
+      "unit": "kg"
+     },
+     "occurrence_1.chip_volume": {
+      "value": 22114.396672633506,
+      "unit": "mm^3"
+     },
+     "occurrence_1.milling_time": {
+      "value": 0.4422879334526701,
+      "unit": "min"
+     },
+     "occurrence_1.setups": {
+      "value": 1,
+      "unit": "count/lot"
+     },
+     "occurrence_1.material": {
+      "value": 1.5212539999999999,
+      "unit": "EUR"
+     },
+     "occurrence_1.milling": {
+      "value": 0.6634319001790051,
+      "unit": "EUR"
+     },
+     "occurrence_1.setup": {
+      "value": 6.0,
+      "unit": "EUR"
+     },
+     "occurrence_1.scrap_credit": {
+      "value": 0.047059436119364105,
+      "unit": "EUR"
+     },
+     "occurrence_1.total": {
+      "value": 8.137626464059641,
+      "unit": "EUR"
+     },
+     "occurrence_2.stock_length": {
+      "value": 133.0,
+      "unit": "mm"
+     },
+     "occurrence_2.stock_width": {
+      "value": 43.0,
+      "unit": "mm"
+     },
+     "occurrence_2.stock_thickness": {
+      "value": 20,
+      "unit": "mm"
+     },
+     "occurrence_2.solid_volume": {
+      "value": 92265.60332736652,
+      "unit": "mm^3"
+     },
+     "occurrence_2.stock_mass": {
+      "value": 0.3042508,
+      "unit": "kg"
+     },
+     "occurrence_2.chip_volume": {
+      "value": 22114.396672633477,
+      "unit": "mm^3"
+     },
+     "occurrence_2.milling_time": {
+      "value": 0.44228793345266953,
+      "unit": "min"
+     },
+     "occurrence_2.setups": {
+      "value": 1,
+      "unit": "count/lot"
+     },
+     "occurrence_2.material": {
+      "value": 1.5212539999999999,
+      "unit": "EUR"
+     },
+     "occurrence_2.milling": {
+      "value": 0.6634319001790043,
+      "unit": "EUR"
+     },
+     "occurrence_2.setup": {
+      "value": 6.0,
+      "unit": "EUR"
+     },
+     "occurrence_2.scrap_credit": {
+      "value": 0.047059436119364036,
+      "unit": "EUR"
+     },
+     "occurrence_2.total": {
+      "value": 8.137626464059641,
+      "unit": "EUR"
+     }
+    },
+    "result": {
+     "value": 16.275252928119283,
+     "unit": "EUR/assembly"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 16.433649728119022,
+     "unit": "EUR/assembly"
+    },
+    "status": "PASS",
+    "reason": "Changed part only; the original part cost is the comparator. Recompute one occurrence by hand."
+   },
+   "C2_manufacturing_cost": {
+    "formula": "sum over all made part types and occurrences of the per-part cost",
+    "inputs": {
+     "case.MotorHalterPlatteIsel": {
+      "value": 11.432037456416845,
+      "unit": "EUR/assembly"
+     },
+     "case.MotorHalter1": {
+      "value": 29.442878606641962,
+      "unit": "EUR/assembly"
+     },
+     "case.MotorHalter2": {
+      "value": 30.001758100562917,
+      "unit": "EUR/assembly"
+     },
+     "case.ZFuehrungsHalter": {
+      "value": 22.250857674964728,
+      "unit": "EUR/assembly"
+     },
+     "case.FestLagerHalterIsel": {
+      "value": 8.61106583721258,
+      "unit": "EUR/assembly"
+     },
+     "case.LosLagerHalterIsel": {
+      "value": 8.53331406190654,
+      "unit": "EUR/assembly"
+     },
+     "case.FestLagerBlock": {
+      "value": 7.481856001203678,
+      "unit": "EUR/assembly"
+     },
+     "case.SensorPlatteZ": {
+      "value": 6.150299266654257,
+      "unit": "EUR/assembly"
+     },
+     "case.Nema23HalterFuss": {
+      "value": 12.735199999999999,
+      "unit": "EUR/assembly"
+     },
+     "case.ZXVerbinder": {
+      "value": 16.275252928119283,
+      "unit": "EUR/assembly"
+     },
+     "original_total": {
+      "value": 153.07291673368252,
+      "unit": "EUR/assembly"
+     }
+    },
+    "result": {
+     "value": 152.91451993368278,
+     "unit": "EUR/assembly"
+    },
+    "threshold": {
+     "operator": "<=",
+     "value": 153.07291673368252,
+     "unit": "EUR/assembly"
+    },
+    "status": "PASS",
+    "reason": "All ten made parts at their quantities."
+   },
+   "C3_cost_delta": {
+    "formula": "delta = (case_manufacturing_cost - original_manufacturing_cost) + sum over substitutions of quantity * (piece_price_to - piece_price_from) / rate; piece_price = amount / vat_divisor / per_quantity",
+    "inputs": {
+     "case_manufacturing_cost": {
+      "value": 152.91451993368278,
+      "unit": "EUR/assembly"
+     },
+     "original_manufacturing_cost": {
+      "value": 153.07291673368252,
+      "unit": "EUR/assembly"
+     },
+     "made_parts_delta": {
+      "value": -0.15839679999973555,
+      "unit": "EUR/assembly"
+     },
+     "S1.quantity": {
+      "value": 1,
+      "unit": "pieces/assembly"
+     },
+     "S1.price_from.amount": {
+      "value": 28.7,
+      "unit": "USD/1 pieces"
+     },
+     "S1.price_from.per_quantity": {
+      "value": 1,
+      "unit": "pieces"
+     },
+     "S1.price_from.pack_size": {
+      "value": 1,
+      "unit": "pieces"
+     },
+     "S1.price_from.vat_divisor": {
+      "value": 1,
+      "unit": "1"
+     },
+     "S1.price_from.piece_price": {
+      "value": 28.7,
+      "unit": "USD/piece"
+     },
+     "S1.price_to.amount": {
+      "value": 17.13,
+      "unit": "USD/1 pieces"
+     },
+     "S1.price_to.per_quantity": {
+      "value": 1,
+      "unit": "pieces"
+     },
+     "S1.price_to.pack_size": {
+      "value": 1,
+      "unit": "pieces"
+     },
+     "S1.price_to.vat_divisor": {
+      "value": 1,
+      "unit": "1"
+     },
+     "S1.price_to.piece_price": {
+      "value": 17.13,
+      "unit": "USD/piece"
+     },
+     "S1.rate": {
+      "value": 1.1127,
+      "unit": "USD/EUR"
+     },
+     "S1.bought_delta": {
+      "value": -10.398130673137414,
+      "unit": "EUR/assembly"
+     },
+     "S3.quantity": {
+      "value": 4,
+      "unit": "pieces/assembly"
+     },
+     "S3.price_from.amount": {
+      "value": 30.06,
+      "unit": "EUR/100 pieces"
+     },
+     "S3.price_from.per_quantity": {
+      "value": 100,
+      "unit": "pieces"
+     },
+     "S3.price_from.pack_size": {
+      "value": 200,
+      "unit": "pieces"
+     },
+     "S3.price_from.vat_divisor": {
+      "value": 1,
+      "unit": "1"
+     },
+     "S3.price_from.piece_price": {
+      "value": 0.3006,
+      "unit": "EUR/piece"
+     },
+     "S3.price_to.amount": {
+      "value": 64.96,
+      "unit": "EUR/100 pieces"
+     },
+     "S3.price_to.per_quantity": {
+      "value": 100,
+      "unit": "pieces"
+     },
+     "S3.price_to.pack_size": {
+      "value": 100,
+      "unit": "pieces"
+     },
+     "S3.price_to.vat_divisor": {
+      "value": 1.19,
+      "unit": "1"
+     },
+     "S3.price_to.piece_price": {
+      "value": 0.5458823529411765,
+      "unit": "EUR/piece"
+     },
+     "S3.rate": {
+      "value": 1.0,
+      "unit": "EUR/EUR"
+     },
+     "S3.bought_delta": {
+      "value": 0.981129411764706,
+      "unit": "EUR/assembly"
+     },
+     "S4.quantity": {
+      "value": 4,
+      "unit": "pieces/assembly"
+     },
+     "S4.price_from.amount": {
+      "value": 8.28,
+      "unit": "EUR/100 pieces"
+     },
+     "S4.price_from.per_quantity": {
+      "value": 100,
+      "unit": "pieces"
+     },
+     "S4.price_from.pack_size": {
+      "value": 200,
+      "unit": "pieces"
+     },
+     "S4.price_from.vat_divisor": {
+      "value": 1.19,
+      "unit": "1"
+     },
+     "S4.price_from.piece_price": {
+      "value": 0.06957983193277312,
+      "unit": "EUR/piece"
+     },
+     "S4.price_to.amount": {
+      "value": 17.98,
+      "unit": "EUR/100 pieces"
+     },
+     "S4.price_to.per_quantity": {
+      "value": 100,
+      "unit": "pieces"
+     },
+     "S4.price_to.pack_size": {
+      "value": 200,
+      "unit": "pieces"
+     },
+     "S4.price_to.vat_divisor": {
+      "value": 1,
+      "unit": "1"
+     },
+     "S4.price_to.piece_price": {
+      "value": 0.17980000000000002,
+      "unit": "EUR/piece"
+     },
+     "S4.rate": {
+      "value": 1.0,
+      "unit": "EUR/EUR"
+     },
+     "S4.bought_delta": {
+      "value": 0.4408806722689076,
+      "unit": "EUR/assembly"
+     },
+     "bought_parts_delta": {
+      "value": -8.9761205891038,
+      "unit": "EUR/assembly"
+     }
+    },
+    "result": {
+     "value": -9.134517389103536,
+     "unit": "EUR/assembly"
+    },
+    "threshold": {
+     "operator": "<",
+     "value": 0,
+     "unit": "EUR/assembly"
+    },
+    "status": "PASS",
+    "reason": "Less expensive: delta < 0. Unchanged bought parts add 0 (rates.yaml); a changed bought part adds its price difference excluding VAT, converted to EUR with the recorded rate."
+   }
+  }
+ },
+ "verdict": "ACCEPT",
+ "compliance": [
+  {
+   "check": "F5/F6",
+   "finding": "Whole-assembly peak stress under LC1 and LC2 is not modelled.",
+   "status": "open",
+   "failed_records": []
+  },
+  {
+   "check": "G6",
+   "finding": "Z travel 134.09 mm was measured once by the old repo's static sweep (2 mm steps) and is carried; it is not recomputed in this repo. Rail coverage 138.6 mm.",
+   "status": "open",
+   "failed_records": []
+  }
+ ],
+ "information": {
+  "z_speed_cutting": {
+   "formula": "speed = pitch * highest rpm with pull_out_torque(rpm) >= factor * required_torque (linear interpolation); required_torque = force * pitch / (2*pi*screw_efficiency)",
+   "inputs": {
+    "force": {
+     "value": 336.9258053553292,
+     "unit": "N"
+    },
+    "screw_pitch": {
+     "value": 2.5,
+     "unit": "mm"
+    },
+    "screw_efficiency": {
+     "value": 0.9,
+     "unit": "1"
+    },
+    "required_torque": {
+     "value": 14.895390938199563,
+     "unit": "N cm"
+    },
+    "factor": {
+     "value": 2,
+     "unit": "1"
+    },
+    "target_pull_out_torque": {
+     "value": 29.790781876399127,
+     "unit": "N cm"
+    },
+    "rpm": {
+     "value": 783.138271854013,
+     "unit": "rpm"
+    }
+   },
+   "result": {
+    "value": 1957.8456796350326,
+    "unit": "mm/min"
+   },
+   "threshold": {
+    "operator": "none",
+    "value": null,
+    "unit": "mm/min"
+   },
+   "status": "INFO",
+   "reason": "S1: pull-out curve DM542T driver, 24 V, 2.03 A peak, 2000 pulses/rev (as given in the design brief of 2026-11-24) (https://www.omc-stepperonline.com/nema-23-bipolar-1-8deg-0-9-nm-127-5oz-in-2a-3-6v-57x57x52mm-4-wires.html). The YAML gives no Z speed requirement; this is information, not a grader. Our driver and supply voltage are not known."
+  },
+  "z_speed_rapid": {
+   "formula": "speed = pitch * highest rpm with pull_out_torque(rpm) >= factor * required_torque (linear interpolation); required_torque = force * pitch / (2*pi*screw_efficiency)",
+   "inputs": {
+    "force": {
+     "value": 136.9258053553292,
+     "unit": "N"
+    },
+    "screw_pitch": {
+     "value": 2.5,
+     "unit": "mm"
+    },
+    "screw_efficiency": {
+     "value": 0.9,
+     "unit": "1"
+    },
+    "required_torque": {
+     "value": 6.053449655316489,
+     "unit": "N cm"
+    },
+    "factor": {
+     "value": 2,
+     "unit": "1"
+    },
+    "target_pull_out_torque": {
+     "value": 12.106899310632977,
+     "unit": "N cm"
+    },
+    "rpm": {
+     "value": 1299.3877861917688,
+     "unit": "rpm"
+    }
+   },
+   "result": {
+    "value": 3248.469465479422,
+    "unit": "mm/min"
+   },
+   "threshold": {
+    "operator": "none",
+    "value": null,
+    "unit": "mm/min"
+   },
+   "status": "INFO",
+   "reason": "S1: pull-out curve DM542T driver, 24 V, 2.03 A peak, 2000 pulses/rev (as given in the design brief of 2026-11-24) (https://www.omc-stepperonline.com/nema-23-bipolar-1-8deg-0-9-nm-127-5oz-in-2a-3-6v-57x57x52mm-4-wires.html). The YAML gives no Z speed requirement; this is information, not a grader. Our driver and supply voltage are not known."
+  },
+  "z_drive_force_capacity": {
+   "formula": "margin = capacity / required; capacity = yaml_force * drive_scale * motor_torque / yaml_motor_torque; drive_scale = derived_force / yaml_derived_force (1 within the YAML's 0.5 N rounding); derived_force = 2*pi*yaml_motor_torque*screw_efficiency/(screw_pitch/1000); required = moving_mass * (g + acceleration) + plunge_force; plunge_force = LC1 force_N",
+   "inputs": {
+    "motor_torque": {
+     "value": 0.9,
+     "unit": "Nm"
+    },
+    "yaml_motor_torque": {
+     "value": 3,
+     "unit": "Nm"
+    },
+    "screw_efficiency": {
+     "value": 0.9,
+     "unit": "1"
+    },
+    "screw_pitch": {
+     "value": 2.5,
+     "unit": "mm"
+    },
+    "yaml_force": {
+     "value": 6800,
+     "unit": "N"
+    },
+    "derived_force": {
+     "value": 6785.840131753953,
+     "unit": "N"
+    },
+    "yaml_derived_force": {
+     "value": 6786,
+     "unit": "N"
+    },
+    "drive_scale": {
+     "value": 1.0,
+     "unit": "1"
+    },
+    "capacity": {
+     "value": 2040.0,
+     "unit": "N"
+    },
+    "moving_mass": {
+     "value": 12.670513559274074,
+     "unit": "kg"
+    },
+    "g": {
+     "value": 9.80665,
+     "unit": "m/s^2"
+    },
+    "acceleration": {
+     "value": 1.0,
+     "unit": "m/s^2"
+    },
+    "plunge_force": {
+     "value": 200,
+     "unit": "N"
+    },
+    "required": {
+     "value": 336.9258053553292,
+     "unit": "N"
+    },
+    "moving_parts_with_volume": {
+     "value": 46,
+     "unit": "count"
+    }
+   },
+   "result": {
+    "value": 6.054745488694676,
+    "unit": "1"
+   },
+   "threshold": {
+    "operator": "none",
+    "value": null,
+    "unit": "1"
+   },
+   "status": "INFO",
+   "reason": "S1: assumption: Z acceleration 1 m/s^2; plunge force = LC1 force (read from subassembly.yaml); bought parts counted as steel (upper bound); pull-out torque >= 2 x required torque. Holding torque; the torque falls with speed."
+  }
+ },
+ "datum": {
+  "accepted": true,
+  "rotation": [
+   [
+    1.0,
+    -0.0,
+    -0.0
+   ],
+   [
+    -0.0,
+    -1.0,
+    0.0
+   ],
+   [
+    -0.0,
+    0.0,
+    -1.0
+   ]
+  ],
+  "translation_mm": [
+   664.0604666632702,
+   569.7137759658689,
+   302.5
+  ],
+  "carriage_residuals_mm": [
+   5.684341886080802e-14,
+   2.842170943040401e-14,
+   0.0,
+   2.842170943040401e-14
+  ],
+  "x_nut_residual_mm": 6.013734249196466,
+  "spindle_axis_residual_mm": 1.6507574518875927,
+  "tool": {
+   "spindle_nose_z": 112.38476940892392,
+   "tool_tip_z": 68.62566110574303,
+   "stick_out_mm": 43.75910830318088
+  }
+ },
+ "baseline_findings": [
+  {
+   "check": "F7",
+   "finding": "Z ball nut static rating 3000 N / LC2 thrust 6800 N = 0.44 < 1.2 (nut identity to verify: BOM names Dold Mechatronic, rating from Isel catalog)."
+  },
+  {
+   "check": "G10",
+   "finding": "Screws engage 0 mm: rear_clamp_m8 ends 12.0 mm short of its thread; motor_m5 ends 5.0 mm short of its thread (required 1.5 x d)."
+  },
+  {
+   "check": "F5/F6",
+   "finding": "Whole-assembly peak stress under LC1 and LC2 is not modelled."
+  },
+  {
+   "check": "G9",
+   "finding": "Native Z span 512.874 mm includes Spindle GDZ-23 solid 31 (the tool); 469.115 mm without it. Registered to the YAML frame: tool tip z 68.6 (YAML 68.0), spindle body ends at z 112.4 (YAML nose 98.0): the CAD tool sticks out 43.8 mm, the YAML assumes 30 mm (YAML values used; G9 excludes the tool)."
+  },
+  {
+   "check": "G6",
+   "finding": "Z travel 134.09 mm was measured once by the old repo's static sweep (2 mm steps) and is carried; it is not recomputed in this repo. Rail coverage 138.6 mm."
+  }
+ ]
+}

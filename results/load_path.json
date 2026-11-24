@@ -1,0 +1,3061 @@
+{
+ "scope": "LC1 cutting load path, original design. Statics with an ideal axial X drive; nominal beam models. Analysis output, not a grader.",
+ "points_mm": {
+  "tool_tip": [
+   667.9,
+   435.2,
+   68.0
+  ],
+  "x_carriage_center": [
+   668.0,
+   557.6,
+   212.0
+  ],
+  "x_nut": [
+   658.7,
+   613.3,
+   311.2
+  ]
+ },
+ "tool_tip_z": {
+  "formula": "tool_tip_z = spindle_nose_z - tool_stick_out",
+  "inputs": {
+   "spindle_nose_z": {
+    "value": 98.0,
+    "unit": "mm"
+   },
+   "tool_stick_out": {
+    "value": 30,
+    "unit": "mm"
+   },
+   "yaml_tool_tip_z": {
+    "value": 68.0,
+    "unit": "mm"
+   }
+  },
+  "result": {
+   "value": 68.0,
+   "unit": "mm"
+  },
+  "threshold": {
+   "operator": "none",
+   "value": null,
+   "unit": "mm"
+  },
+  "status": "INFO",
+  "reason": ""
+ },
+ "stations_mm": {
+  "z_guides": [
+   667.9500000000004,
+   513.5999999999998,
+   295.7911795704385
+  ],
+  "tool_side_clamp": [
+   667.9500000000003,
+   461.0499999500114,
+   240.79117957043852
+  ],
+  "zx_support": [
+   667.9499999999999,
+   569.0499999500116,
+   311.0000000000001
+  ]
+ },
+ "load_case": {
+  "id": "LC1_cutting_force",
+  "force_N": 200
+ },
+ "directions": {
+  "+X": {
+   "reactions": {
+    "x_nut.force_x": {
+     "formula": "x_nut_force_x = -tool_force_x (ideal axial X drive)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": -200,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.force_x": {
+     "formula": "x_carriage_force = -(tool_force + x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": 0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.force_y": {
+     "formula": "x_carriage_force = -(tool_force + x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.force_z": {
+     "formula": "x_carriage_force = -(tool_force + x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.couple_x": {
+     "formula": "couple = -((tool_tip - x_carriage_center) x tool_force + (x_nut - x_carriage_center) x x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N mm"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.couple_y": {
+     "formula": "couple = -((tool_tip - x_carriage_center) x tool_force + (x_nut - x_carriage_center) x x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      }
+     },
+     "result": {
+      "value": 48640.0,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N mm"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.couple_z": {
+     "formula": "couple = -((tool_tip - x_carriage_center) x tool_force + (x_nut - x_carriage_center) x x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      }
+     },
+     "result": {
+      "value": -35619.99999999999,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N mm"
+     },
+     "status": "INFO",
+     "reason": ""
+    }
+   },
+   "equilibrium": {
+    "force_residual": {
+     "formula": "norm(tool_force + x_nut_force + x_carriage_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_carriage_force_x": {
+       "value": 0,
+       "unit": "N"
+      },
+      "x_carriage_force_y": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_carriage_force_z": {
+       "value": -0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": 0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "<=",
+      "value": 1e-07,
+      "unit": "N"
+     },
+     "status": "PASS",
+     "reason": ""
+    },
+    "moment_residual": {
+     "formula": "norm(sum((point - x_carriage_center) x force) + couple)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      },
+      "couple_x": {
+       "value": -0.0,
+       "unit": "N mm"
+      },
+      "couple_y": {
+       "value": 48640.0,
+       "unit": "N mm"
+      },
+      "couple_z": {
+       "value": -35619.99999999999,
+       "unit": "N mm"
+      }
+     },
+     "result": {
+      "value": 3.637978807091713e-12,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "<=",
+      "value": 1e-06,
+      "unit": "N mm"
+     },
+     "status": "PASS",
+     "reason": ""
+    }
+   },
+   "parts": {
+    "moving_plate": {
+     "deflection": {
+      "formula": "F * abs(span) * (tip_offset^2 - tip_offset*span + span^2/3) / (E*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": -54.99999999999997,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -227.7911795704385,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 20.000000000000057,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 137.0000000000001,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 4285588.333333356,
+        "unit": "mm^4"
+       }
+      },
+      "result": {
+       "value": 0.0014802269669510558,
+       "unit": "mm"
+      },
+      "threshold": {
+       "operator": "none",
+       "value": null,
+       "unit": "mm"
+      },
+      "status": "INFO",
+      "reason": ""
+     },
+     "bending_stress": {
+      "formula": "F * max(abs(tip_offset), abs(tip_offset - span)) * bending_depth / (2*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": -54.99999999999997,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -227.7911795704385,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 20.000000000000057,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 137.0000000000001,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 4285588.333333356,
+        "unit": "mm^4"
+       },
+       "yield_strength": {
+        "value": 125,
+        "unit": "MPa"
+       },
+       "safety_factor": {
+        "value": 2.0,
+        "unit": "1"
+       }
+      },
+      "result": {
+       "value": 0.7281938715022775,
+       "unit": "MPa"
+      },
+      "threshold": {
+       "operator": "<=",
+       "value": 62.5,
+       "unit": "MPa"
+      },
+      "status": "PASS",
+      "reason": ""
+     }
+    },
+    "fixed_guide_plate": {
+     "deflection": {
+      "formula": "F * abs(span) * (tip_offset^2 - tip_offset*span + span^2/3) / (E*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": -15.208820429561626,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -243.0000000000001,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 20.000000200000006,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 137.00000000000006,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 4285588.3761892235,
+        "unit": "mm^4"
+       }
+      },
+      "result": {
+       "value": 0.0005620367667385751,
+       "unit": "mm"
+      },
+      "threshold": {
+       "operator": "none",
+       "value": null,
+       "unit": "mm"
+      },
+      "status": "INFO",
+      "reason": ""
+     },
+     "bending_stress": {
+      "formula": "F * max(abs(tip_offset), abs(tip_offset - span)) * bending_depth / (2*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": -15.208820429561626,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -243.0000000000001,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 20.000000200000006,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 137.00000000000006,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 4285588.3761892235,
+        "unit": "mm^4"
+       },
+       "yield_strength": {
+        "value": 125,
+        "unit": "MPa"
+       },
+       "safety_factor": {
+        "value": 2.0,
+        "unit": "1"
+       }
+      },
+      "result": {
+       "value": 0.7768128218978098,
+       "unit": "MPa"
+      },
+      "threshold": {
+       "operator": "<=",
+       "value": 62.5,
+       "unit": "MPa"
+      },
+      "status": "PASS",
+      "reason": ""
+     }
+    },
+    "zxverbinder_pair": {
+     "deflection": {
+      "formula": "F * arm_span / (parallel_arms * E) * (1/gross_area + eccentricity^2/I_z)",
+      "inputs": {
+       "drive_force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "arm_span": {
+        "value": 37.5,
+        "unit": "mm"
+       },
+       "eccentricity": {
+        "value": 29.0,
+        "unit": "mm"
+       },
+       "gross_area": {
+        "value": 560.0,
+        "unit": "mm^2"
+       },
+       "I_z": {
+        "value": 36586.666666666664,
+        "unit": "mm^4"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "parallel_arms": {
+        "value": 4,
+        "unit": "count"
+       }
+      },
+      "result": {
+       "value": 0.0006635418835901708,
+       "unit": "mm"
+      },
+      "threshold": {
+       "operator": "none",
+       "value": null,
+       "unit": "mm"
+      },
+      "status": "INFO",
+      "reason": ""
+     }
+    }
+   },
+   "stiffness_ranking": [
+    "moving_plate",
+    "zxverbinder_pair",
+    "fixed_guide_plate"
+   ]
+  },
+  "-X": {
+   "reactions": {
+    "x_nut.force_x": {
+     "formula": "x_nut_force_x = -tool_force_x (ideal axial X drive)",
+     "inputs": {
+      "tool_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": 200,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.force_x": {
+     "formula": "x_carriage_force = -(tool_force + x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": 0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.force_y": {
+     "formula": "x_carriage_force = -(tool_force + x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.force_z": {
+     "formula": "x_carriage_force = -(tool_force + x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.couple_x": {
+     "formula": "couple = -((tool_tip - x_carriage_center) x tool_force + (x_nut - x_carriage_center) x x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N mm"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.couple_y": {
+     "formula": "couple = -((tool_tip - x_carriage_center) x tool_force + (x_nut - x_carriage_center) x x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      }
+     },
+     "result": {
+      "value": -48640.0,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N mm"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.couple_z": {
+     "formula": "couple = -((tool_tip - x_carriage_center) x tool_force + (x_nut - x_carriage_center) x x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      }
+     },
+     "result": {
+      "value": 35619.99999999999,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N mm"
+     },
+     "status": "INFO",
+     "reason": ""
+    }
+   },
+   "equilibrium": {
+    "force_residual": {
+     "formula": "norm(tool_force + x_nut_force + x_carriage_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_carriage_force_x": {
+       "value": 0,
+       "unit": "N"
+      },
+      "x_carriage_force_y": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_carriage_force_z": {
+       "value": -0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": 0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "<=",
+      "value": 1e-07,
+      "unit": "N"
+     },
+     "status": "PASS",
+     "reason": ""
+    },
+    "moment_residual": {
+     "formula": "norm(sum((point - x_carriage_center) x force) + couple)",
+     "inputs": {
+      "tool_force_x": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": 200,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      },
+      "couple_x": {
+       "value": -0.0,
+       "unit": "N mm"
+      },
+      "couple_y": {
+       "value": -48640.0,
+       "unit": "N mm"
+      },
+      "couple_z": {
+       "value": 35619.99999999999,
+       "unit": "N mm"
+      }
+     },
+     "result": {
+      "value": 3.637978807091713e-12,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "<=",
+      "value": 1e-06,
+      "unit": "N mm"
+     },
+     "status": "PASS",
+     "reason": ""
+    }
+   },
+   "parts": {
+    "moving_plate": {
+     "deflection": {
+      "formula": "F * abs(span) * (tip_offset^2 - tip_offset*span + span^2/3) / (E*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": -54.99999999999997,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -227.7911795704385,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 20.000000000000057,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 137.0000000000001,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 4285588.333333356,
+        "unit": "mm^4"
+       }
+      },
+      "result": {
+       "value": 0.0014802269669510558,
+       "unit": "mm"
+      },
+      "threshold": {
+       "operator": "none",
+       "value": null,
+       "unit": "mm"
+      },
+      "status": "INFO",
+      "reason": ""
+     },
+     "bending_stress": {
+      "formula": "F * max(abs(tip_offset), abs(tip_offset - span)) * bending_depth / (2*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": -54.99999999999997,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -227.7911795704385,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 20.000000000000057,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 137.0000000000001,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 4285588.333333356,
+        "unit": "mm^4"
+       },
+       "yield_strength": {
+        "value": 125,
+        "unit": "MPa"
+       },
+       "safety_factor": {
+        "value": 2.0,
+        "unit": "1"
+       }
+      },
+      "result": {
+       "value": 0.7281938715022775,
+       "unit": "MPa"
+      },
+      "threshold": {
+       "operator": "<=",
+       "value": 62.5,
+       "unit": "MPa"
+      },
+      "status": "PASS",
+      "reason": ""
+     }
+    },
+    "fixed_guide_plate": {
+     "deflection": {
+      "formula": "F * abs(span) * (tip_offset^2 - tip_offset*span + span^2/3) / (E*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": -15.208820429561626,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -243.0000000000001,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 20.000000200000006,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 137.00000000000006,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 4285588.3761892235,
+        "unit": "mm^4"
+       }
+      },
+      "result": {
+       "value": 0.0005620367667385751,
+       "unit": "mm"
+      },
+      "threshold": {
+       "operator": "none",
+       "value": null,
+       "unit": "mm"
+      },
+      "status": "INFO",
+      "reason": ""
+     },
+     "bending_stress": {
+      "formula": "F * max(abs(tip_offset), abs(tip_offset - span)) * bending_depth / (2*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": -15.208820429561626,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -243.0000000000001,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 20.000000200000006,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 137.00000000000006,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 4285588.3761892235,
+        "unit": "mm^4"
+       },
+       "yield_strength": {
+        "value": 125,
+        "unit": "MPa"
+       },
+       "safety_factor": {
+        "value": 2.0,
+        "unit": "1"
+       }
+      },
+      "result": {
+       "value": 0.7768128218978098,
+       "unit": "MPa"
+      },
+      "threshold": {
+       "operator": "<=",
+       "value": 62.5,
+       "unit": "MPa"
+      },
+      "status": "PASS",
+      "reason": ""
+     }
+    },
+    "zxverbinder_pair": {
+     "deflection": {
+      "formula": "F * arm_span / (parallel_arms * E) * (1/gross_area + eccentricity^2/I_z)",
+      "inputs": {
+       "drive_force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "arm_span": {
+        "value": 37.5,
+        "unit": "mm"
+       },
+       "eccentricity": {
+        "value": 29.0,
+        "unit": "mm"
+       },
+       "gross_area": {
+        "value": 560.0,
+        "unit": "mm^2"
+       },
+       "I_z": {
+        "value": 36586.666666666664,
+        "unit": "mm^4"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "parallel_arms": {
+        "value": 4,
+        "unit": "count"
+       }
+      },
+      "result": {
+       "value": 0.0006635418835901708,
+       "unit": "mm"
+      },
+      "threshold": {
+       "operator": "none",
+       "value": null,
+       "unit": "mm"
+      },
+      "status": "INFO",
+      "reason": ""
+     }
+    }
+   },
+   "stiffness_ranking": [
+    "moving_plate",
+    "zxverbinder_pair",
+    "fixed_guide_plate"
+   ]
+  },
+  "+Y": {
+   "reactions": {
+    "x_nut.force_x": {
+     "formula": "x_nut_force_x = -tool_force_x (ideal axial X drive)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.force_x": {
+     "formula": "x_carriage_force = -(tool_force + x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.force_y": {
+     "formula": "x_carriage_force = -(tool_force + x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": -200.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.force_z": {
+     "formula": "x_carriage_force = -(tool_force + x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.couple_x": {
+     "formula": "couple = -((tool_tip - x_carriage_center) x tool_force + (x_nut - x_carriage_center) x x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      }
+     },
+     "result": {
+      "value": -28800.0,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N mm"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.couple_y": {
+     "formula": "couple = -((tool_tip - x_carriage_center) x tool_force + (x_nut - x_carriage_center) x x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N mm"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.couple_z": {
+     "formula": "couple = -((tool_tip - x_carriage_center) x tool_force + (x_nut - x_carriage_center) x x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      }
+     },
+     "result": {
+      "value": 20.000000000004547,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N mm"
+     },
+     "status": "INFO",
+     "reason": ""
+    }
+   },
+   "equilibrium": {
+    "force_residual": {
+     "formula": "norm(tool_force + x_nut_force + x_carriage_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_carriage_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_carriage_force_y": {
+       "value": -200.0,
+       "unit": "N"
+      },
+      "x_carriage_force_z": {
+       "value": -0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": 0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "<=",
+      "value": 1e-07,
+      "unit": "N"
+     },
+     "status": "PASS",
+     "reason": ""
+    },
+    "moment_residual": {
+     "formula": "norm(sum((point - x_carriage_center) x force) + couple)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": 200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      },
+      "couple_x": {
+       "value": -28800.0,
+       "unit": "N mm"
+      },
+      "couple_y": {
+       "value": -0.0,
+       "unit": "N mm"
+      },
+      "couple_z": {
+       "value": 20.000000000004547,
+       "unit": "N mm"
+      }
+     },
+     "result": {
+      "value": 0.0,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "<=",
+      "value": 1e-06,
+      "unit": "N mm"
+     },
+     "status": "PASS",
+     "reason": ""
+    }
+   },
+   "parts": {
+    "moving_plate": {
+     "deflection": {
+      "formula": "F * abs(span) * (tip_offset^2 - tip_offset*span + span^2/3) / (E*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": -54.99999999999997,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -227.7911795704385,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 137.0000000000001,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 20.000000000000057,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 91333.33333333419,
+        "unit": "mm^4"
+       }
+      },
+      "result": {
+       "value": 0.06945594985676064,
+       "unit": "mm"
+      },
+      "threshold": {
+       "operator": "none",
+       "value": null,
+       "unit": "mm"
+      },
+      "status": "INFO",
+      "reason": ""
+     },
+     "bending_stress": {
+      "formula": "F * max(abs(tip_offset), abs(tip_offset - span)) * bending_depth / (2*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": -54.99999999999997,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -227.7911795704385,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 137.0000000000001,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 20.000000000000057,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 91333.33333333419,
+        "unit": "mm^4"
+       },
+       "yield_strength": {
+        "value": 125,
+        "unit": "MPa"
+       },
+       "safety_factor": {
+        "value": 2.0,
+        "unit": "1"
+       }
+      },
+      "result": {
+       "value": 4.988128019790591,
+       "unit": "MPa"
+      },
+      "threshold": {
+       "operator": "<=",
+       "value": 62.5,
+       "unit": "MPa"
+      },
+      "status": "PASS",
+      "reason": ""
+     }
+    },
+    "fixed_guide_plate": {
+     "deflection": {
+      "formula": "F * abs(span) * (tip_offset^2 - tip_offset*span + span^2/3) / (E*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": 83.79117957043849,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -144.0,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 137.00000000000006,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 20.000000200000006,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 91333.33607333347,
+        "unit": "mm^4"
+       }
+      },
+      "result": {
+       "value": 0.09211503220785147,
+       "unit": "mm"
+      },
+      "threshold": {
+       "operator": "none",
+       "value": null,
+       "unit": "mm"
+      },
+      "status": "INFO",
+      "reason": ""
+     },
+     "bending_stress": {
+      "formula": "F * max(abs(tip_offset), abs(tip_offset - span)) * bending_depth / (2*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": 83.79117957043849,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -144.0,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 137.00000000000006,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 20.000000200000006,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 91333.33607333347,
+        "unit": "mm^4"
+       },
+       "yield_strength": {
+        "value": 125,
+        "unit": "MPa"
+       },
+       "safety_factor": {
+        "value": 2.0,
+        "unit": "1"
+       }
+      },
+      "result": {
+       "value": 4.98812792002806,
+       "unit": "MPa"
+      },
+      "threshold": {
+       "operator": "<=",
+       "value": 62.5,
+       "unit": "MPa"
+      },
+      "status": "PASS",
+      "reason": ""
+     }
+    }
+   },
+   "stiffness_ranking": [
+    "fixed_guide_plate",
+    "moving_plate"
+   ]
+  },
+  "-Y": {
+   "reactions": {
+    "x_nut.force_x": {
+     "formula": "x_nut_force_x = -tool_force_x (ideal axial X drive)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.force_x": {
+     "formula": "x_carriage_force = -(tool_force + x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.force_y": {
+     "formula": "x_carriage_force = -(tool_force + x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": 200.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.force_z": {
+     "formula": "x_carriage_force = -(tool_force + x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.couple_x": {
+     "formula": "couple = -((tool_tip - x_carriage_center) x tool_force + (x_nut - x_carriage_center) x x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      }
+     },
+     "result": {
+      "value": 28800.0,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N mm"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.couple_y": {
+     "formula": "couple = -((tool_tip - x_carriage_center) x tool_force + (x_nut - x_carriage_center) x x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      }
+     },
+     "result": {
+      "value": -0.0,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N mm"
+     },
+     "status": "INFO",
+     "reason": ""
+    },
+    "x_carriages.couple_z": {
+     "formula": "couple = -((tool_tip - x_carriage_center) x tool_force + (x_nut - x_carriage_center) x x_nut_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      }
+     },
+     "result": {
+      "value": -20.000000000004547,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "none",
+      "value": null,
+      "unit": "N mm"
+     },
+     "status": "INFO",
+     "reason": ""
+    }
+   },
+   "equilibrium": {
+    "force_residual": {
+     "formula": "norm(tool_force + x_nut_force + x_carriage_force)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_carriage_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_carriage_force_y": {
+       "value": 200.0,
+       "unit": "N"
+      },
+      "x_carriage_force_z": {
+       "value": -0.0,
+       "unit": "N"
+      }
+     },
+     "result": {
+      "value": 0.0,
+      "unit": "N"
+     },
+     "threshold": {
+      "operator": "<=",
+      "value": 1e-07,
+      "unit": "N"
+     },
+     "status": "PASS",
+     "reason": ""
+    },
+    "moment_residual": {
+     "formula": "norm(sum((point - x_carriage_center) x force) + couple)",
+     "inputs": {
+      "tool_force_x": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_force_y": {
+       "value": -200,
+       "unit": "N"
+      },
+      "tool_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_x": {
+       "value": -0.0,
+       "unit": "N"
+      },
+      "x_nut_force_y": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "x_nut_force_z": {
+       "value": 0.0,
+       "unit": "N"
+      },
+      "tool_tip_x": {
+       "value": 667.9,
+       "unit": "mm"
+      },
+      "tool_tip_y": {
+       "value": 435.2,
+       "unit": "mm"
+      },
+      "tool_tip_z": {
+       "value": 68.0,
+       "unit": "mm"
+      },
+      "x_nut_x": {
+       "value": 658.7,
+       "unit": "mm"
+      },
+      "x_nut_y": {
+       "value": 613.3,
+       "unit": "mm"
+      },
+      "x_nut_z": {
+       "value": 311.2,
+       "unit": "mm"
+      },
+      "x_carriage_center_x": {
+       "value": 668.0,
+       "unit": "mm"
+      },
+      "x_carriage_center_y": {
+       "value": 557.6,
+       "unit": "mm"
+      },
+      "x_carriage_center_z": {
+       "value": 212.0,
+       "unit": "mm"
+      },
+      "couple_x": {
+       "value": 28800.0,
+       "unit": "N mm"
+      },
+      "couple_y": {
+       "value": -0.0,
+       "unit": "N mm"
+      },
+      "couple_z": {
+       "value": -20.000000000004547,
+       "unit": "N mm"
+      }
+     },
+     "result": {
+      "value": 0.0,
+      "unit": "N mm"
+     },
+     "threshold": {
+      "operator": "<=",
+      "value": 1e-06,
+      "unit": "N mm"
+     },
+     "status": "PASS",
+     "reason": ""
+    }
+   },
+   "parts": {
+    "moving_plate": {
+     "deflection": {
+      "formula": "F * abs(span) * (tip_offset^2 - tip_offset*span + span^2/3) / (E*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": -54.99999999999997,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -227.7911795704385,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 137.0000000000001,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 20.000000000000057,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 91333.33333333419,
+        "unit": "mm^4"
+       }
+      },
+      "result": {
+       "value": 0.06945594985676064,
+       "unit": "mm"
+      },
+      "threshold": {
+       "operator": "none",
+       "value": null,
+       "unit": "mm"
+      },
+      "status": "INFO",
+      "reason": ""
+     },
+     "bending_stress": {
+      "formula": "F * max(abs(tip_offset), abs(tip_offset - span)) * bending_depth / (2*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": -54.99999999999997,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -227.7911795704385,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 137.0000000000001,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 20.000000000000057,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 91333.33333333419,
+        "unit": "mm^4"
+       },
+       "yield_strength": {
+        "value": 125,
+        "unit": "MPa"
+       },
+       "safety_factor": {
+        "value": 2.0,
+        "unit": "1"
+       }
+      },
+      "result": {
+       "value": 4.988128019790591,
+       "unit": "MPa"
+      },
+      "threshold": {
+       "operator": "<=",
+       "value": 62.5,
+       "unit": "MPa"
+      },
+      "status": "PASS",
+      "reason": ""
+     }
+    },
+    "fixed_guide_plate": {
+     "deflection": {
+      "formula": "F * abs(span) * (tip_offset^2 - tip_offset*span + span^2/3) / (E*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": 83.79117957043849,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -144.0,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 137.00000000000006,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 20.000000200000006,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 91333.33607333347,
+        "unit": "mm^4"
+       }
+      },
+      "result": {
+       "value": 0.09211503220785147,
+       "unit": "mm"
+      },
+      "threshold": {
+       "operator": "none",
+       "value": null,
+       "unit": "mm"
+      },
+      "status": "INFO",
+      "reason": ""
+     },
+     "bending_stress": {
+      "formula": "F * max(abs(tip_offset), abs(tip_offset - span)) * bending_depth / (2*I)",
+      "inputs": {
+       "force": {
+        "value": 200,
+        "unit": "N"
+       },
+       "signed_span": {
+        "value": 83.79117957043849,
+        "unit": "mm"
+       },
+       "tip_offset": {
+        "value": -144.0,
+        "unit": "mm"
+       },
+       "width": {
+        "value": 137.00000000000006,
+        "unit": "mm"
+       },
+       "bending_depth": {
+        "value": 20.000000200000006,
+        "unit": "mm"
+       },
+       "E": {
+        "value": 70000,
+        "unit": "MPa"
+       },
+       "I": {
+        "value": 91333.33607333347,
+        "unit": "mm^4"
+       },
+       "yield_strength": {
+        "value": 125,
+        "unit": "MPa"
+       },
+       "safety_factor": {
+        "value": 2.0,
+        "unit": "1"
+       }
+      },
+      "result": {
+       "value": 4.98812792002806,
+       "unit": "MPa"
+      },
+      "threshold": {
+       "operator": "<=",
+       "value": 62.5,
+       "unit": "MPa"
+      },
+      "status": "PASS",
+      "reason": ""
+     }
+    }
+   },
+   "stiffness_ranking": [
+    "fixed_guide_plate",
+    "moving_plate"
+   ]
+  }
+ }
+}

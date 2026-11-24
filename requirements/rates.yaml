@@ -1,0 +1,59 @@
+# Placeholder rates for the take-home task.
+#
+# All values are round numbers that we selected for this task.
+# They are not prices of a customer or a supplier. Do not use them for a quotation.
+# Use them only to show that a design change makes the cost go up or down.
+# You write the cost model. This file gives the rates only.
+
+currency: EUR
+
+production:
+  units_per_year: 50
+  lot_size: 10              # parts in one lot; one lot shares its setups
+
+labour_rate_eur_h: 30       # one operator
+
+machines:
+  milling_3_axis:
+    machine_rate_eur_h: 60
+    setup_time_min: 40      # for each setup of one lot
+  milling_5_axis:
+    machine_rate_eur_h: 95
+    setup_time_min: 60
+  turning:
+    machine_rate_eur_h: 50
+    setup_time_min: 30
+  laser_cutting:
+    machine_rate_eur_h: 80
+    setup_time_min: 10
+  press_brake:
+    machine_rate_eur_h: 50
+    setup_time_min: 15
+  sawing:
+    machine_rate_eur_h: 25
+    setup_time_min: 5
+  manual_work:              # deburr, thread repair, assembly
+    machine_rate_eur_h: 0   # labour only
+
+materials:
+  EN AW-5083 plate:
+    price_eur_kg: 5.00
+    chip_value_eur_kg: 0.80
+    density_g_cm3: 2.66
+  EN AW-6061 bar:
+    price_eur_kg: 4.00
+    chip_value_eur_kg: 0.80
+    density_g_cm3: 2.70
+  S235 steel plate:
+    price_eur_kg: 2.00
+    chip_value_eur_kg: 0.20
+    density_g_cm3: 7.85
+  S235 steel sheet:
+    price_eur_kg: 2.00
+    chip_value_eur_kg: 0.20
+    density_g_cm3: 7.85
+
+bought_parts:
+  rule: >
+    If you do not change a bought part, its cost difference is 0.
+    If you change a bought part, use the price difference. Give each price and its source.

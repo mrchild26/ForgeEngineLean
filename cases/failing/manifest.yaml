@@ -1,0 +1,7 @@
+# Deliberately bad change: both ZXVerbinder occurrences trimmed 18 mm per end, through the outer bolt bores.
+# Expected FAILs: F1 (bore breaks out), F4 (deflection bound), G3 (protected core). Copied from the old repo.
+case_id: failing
+expected_verdict: REJECT
+design:
+  part_id: ZXVerbinder
+  step: overtrimmed_zxverbinder.step

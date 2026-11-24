@@ -1,0 +1,14 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+docs/assignment.pdf
+
+# advisor prompts (local only)
+.prompts/
+
+# live-change rehearsal output (README, results/live_change_rehearsal.md)
+scratch/
+
+# internal working notes (local paths, process notes)
+PLAN.md
+CLAUDE.md

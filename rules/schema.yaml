@@ -1,0 +1,126 @@
+# Machine-readable schemas for rule files (see SCHEMA.md), one per rule_type. A rule file is a YAML file in rules/
+# with a rule_type key. Types: string, integer, number, list, map. A map has either named `fields` (with `required`)
+# or free keys whose items all follow `values`.
+design_option:
+  type: map
+  required: [rule_type, rule_id, schema_version, part_id, operation, axis, parameter, protected_features, original_step,
+             attribution, unchanged_proofs]
+  fields:
+    rule_type: {type: string, enum: [design_option]}
+    rule_id: {type: string}
+    schema_version: {type: integer, enum: [1]}
+    part_id: {type: string}
+    operation: {type: string, enum: [symmetric_end_trim]}
+    axis: {type: string, enum: [X, Y, Z]}
+    parameter:
+      type: map
+      required: [name, unit, values]
+      fields:
+        name: {type: string, enum: [trim_depth]}
+        unit: {type: string, enum: [mm]}
+        values: {type: list, items: {type: integer, minimum: 1}, min_items: 1, unique: true}
+    protected_features:
+      type: map
+      required: [bolt_seat_radius_mm, features]
+      fields:
+        bolt_seat_radius_mm: {type: number, minimum: 0.001}
+        features: {type: list, items: {type: string, enum: [mounting_holes, bolt_seats, ball_nut_face]}, min_items: 1, unique: true}
+    original_step: {type: string}
+    attribution:
+      type: map
+      required: [project, author, source, hardware_license]
+      fields:
+        project: {type: string}
+        author: {type: string}
+        source: {type: string}
+        hardware_license: {type: string}
+    unchanged_proofs: {type: map, values: {type: string}}
+
+bought_part_substitution:
+  type: map
+  required: [rule_type, rule_id, schema_version, substitutions]
+  fields:
+    rule_type: {type: string, enum: [bought_part_substitution]}
+    rule_id: {type: string}
+    schema_version: {type: integer, enum: [1]}
+    substitutions:
+      type: list
+      min_items: 1
+      items:
+        type: map
+        required: [id, part, quantity, from, to, reason, affected_inputs, price_from, price_to, currency, geometry,
+                   unchanged_proofs]
+        fields:
+          id: {type: string}
+          part: {type: string}
+          includes: {type: list, items: {type: string}, unique: true}
+          quantity: {type: integer, minimum: 1}
+          from: {type: string}
+          to: {type: string}
+          reason: {type: string}
+          affected_inputs:
+            type: list
+            items:
+              type: map
+              required: [path, from, to, unit, source]
+              fields:
+                path: {type: string}
+                from: {type: number}
+                to: {type: number}
+                unit: {type: string}
+                source: {type: string}
+          price_from: &price
+            type: map
+            required: [amount, per_quantity, pack_size, vat, accessed, status]
+            fields:
+              amount: {type: number, minimum: 0}
+              per_quantity: {type: integer, minimum: 1}
+              pack_size: {type: integer, minimum: 1}
+              vat: {type: string, enum: [excluded, included]}
+              vat_rate: {type: number, minimum: 0}
+              article: {type: string}
+              url: {type: string}
+              accessed: {type: string}
+              status: {type: string, enum: [quoted, unconfirmed]}
+              note: {type: string}
+          price_to: *price
+          currency: {type: string}
+          conversion:
+            type: map
+            required: [rate, unit, date, source, url, accessed]
+            fields:
+              rate: {type: number, minimum: 0.000001}
+              unit: {type: string}
+              date: {type: string}
+              source: {type: string}
+              url: {type: string}
+              accessed: {type: string}
+          geometry:
+            type: map
+            required: [type, anchor]
+            fields:
+              type: {type: string, enum: [motor_envelope, socket_head_screw]}
+              anchor: {type: string}
+              body_mm: {type: list, items: {type: number, minimum: 0.001}, min_items: 3}
+              shaft_diameter_mm: {type: number, minimum: 0.001}
+              shaft_length_mm: {type: number, minimum: 0.001}
+              shank_diameter_mm: {type: number, minimum: 0.001}
+              length_mm: {type: number, minimum: 0.001}
+              head_diameter_mm: {type: number, minimum: 0.001}
+              head_height_mm: {type: number, minimum: 0.001}
+          drive_check:
+            type: map
+            required: [acceleration_m_s2, bought_part_density_g_cm3, source]
+            fields:
+              acceleration_m_s2: {type: number, minimum: 0}
+              bought_part_density_g_cm3: {type: number, minimum: 0.001}
+              speed_safety_factor: {type: number, minimum: 1}
+              source: {type: string}
+              pull_out_torque:
+                type: map
+                required: [source, conditions, points_rpm_Ncm]
+                fields:
+                  source: {type: string}
+                  conditions: {type: string}
+                  points_rpm_Ncm: {type: list, min_items: 2, items: {type: list, min_items: 2, items: {type: number, minimum: 0}}}
+          unchanged_proofs: {type: map, values: {type: string}}

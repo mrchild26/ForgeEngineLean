@@ -1,0 +1,14 @@
+# Data of unchanged bought parts that the graders use. Read at runtime by src/config.py (no rule_type: not a rule).
+# For a live requirement change: --set "bought_parts:z_ball_nut.static_axial_rating_N.value=4000"
+z_ball_nut:
+  description: Z ball nut on the 12 x 2.5 mm screw (STEP part GewindeMutterIsel), F7
+  static_axial_rating_N:
+    value: 3000
+    source: "published: Isel 213412 0003 static axial rating, matched by the 24 x 37.5 mm nut envelope"
+  envelope_mm: [24.0, 24.0, 37.5]   # sorted spans of the STEP nut that identify it; another envelope = no rating
+  sources:
+    - https://www.isel.com/fileadmin/user_upload/Kataloge/20260120_Catalog_Automation_en.pdf
+    - https://github.com/mallemann/mycnc/blob/1d1c3bfd88175dc12630b08827f7c91e85e71be5/bom/v4-structured-bom.md
+  note: >-
+    The author BOM names the nut 'Kugelgewindemutter 12x2,5mm, Einzelgangrueckfuehrung von Dold Mechatronic' (file
+    DoldGewindeMutterIsel); the rating is from an Isel catalog entry matched by the envelope. Source to verify.

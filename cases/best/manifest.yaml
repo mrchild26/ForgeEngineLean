@@ -1,0 +1,165 @@
+# Written by optimize.py; read by bench.py.
+case_id: best
+option_id: zxverbinder_trim_02mm+S1+S3+S4
+expected_verdict: ACCEPT
+design:
+  rule_id: zxverbinder_trim
+  part_id: ZXVerbinder
+  step: zxverbinder.step
+  parameter:
+    name: trim_depth
+    value: 2
+    unit: mm
+  attribution:
+    project: MyCNC V4
+    author: Martin Allemann
+    source: https://github.com/mallemann/mycnc
+    hardware_license: CERN-OHL-S-2.0
+  licence: Changed design file of MyCNC V4 by Martin Allemann (https://github.com/mallemann/mycnc), licensed CERN-OHL-S-2.0;
+    it keeps that licence.
+substitutions:
+- id: S1
+  part: Nema 23 76x56
+  from: StepperOnline 23HS45-4204S, NEMA 23, holding torque 3.0 Nm (author BOM; subassembly.yaml LC2 motor_torque_Nm 3)
+  to: StepperOnline 23HS20-2004S, NEMA 23, holding torque 0.9 Nm (datasheet), 2.0 A, body 57 x 57 x 52 mm, shaft 6.35 x 21
+    mm, rotor inertia 280 g cm^2. The driver current must be set to 2.0 A.
+  quantity: 1
+  step: S1_motor_envelope.step
+  geometry:
+    model: 'simplified envelope: body box below the original flange face and the shaft on the original axis (no boss, flange
+      holes or wire)'
+    type: motor_envelope
+    body_mm:
+    - 57
+    - 57
+    - 52
+    shaft_diameter_mm: 6.35
+    shaft_length_mm: 21
+    anchor: original flange face and shaft axis (the 23HS20-2004S drawing was not available, so its flange thickness is not
+      known; the original flange face is kept)
+  price_from:
+    amount: 28.7
+    per_quantity: 1
+    pack_size: 1
+    vat: excluded
+    url: https://www.omc-stepperonline.com/nema-23-bipolar-3nm-425oz-in-4-2a-57x57x114mm-4-wires-stepper-motor-cnc.html
+    accessed: '2026-11-24'
+    status: quoted
+    note: 1 pc, excl. VAT, as quoted in the design brief of 2026-11-24 (an automated fetch was refused, HTTP 403).
+  price_to:
+    amount: 17.13
+    per_quantity: 1
+    pack_size: 1
+    vat: excluded
+    url: https://www.omc-stepperonline.com/nema-23-bipolar-1-8deg-0-9-nm-127-5oz-in-2a-3-6v-57x57x52mm-4-wires.html
+    accessed: '2026-11-24'
+    status: quoted
+    note: 1 pc, excl. VAT, as quoted in the design brief of 2026-11-24.
+  currency: USD
+  piece_price_from: 28.7
+  piece_price_to: 17.13
+  conversion:
+    rate: 1.1127
+    unit: USD/EUR
+    date: '2026-11-11'
+    source: ECB euro foreign exchange reference rate
+    url: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html
+    accessed: '2026-11-24'
+  reason: 'F7: the static rating of the Z ball nut (Isel 213412 0003, 3,000 N; the CAD nut envelope 24 x 37.5 mm matches)
+    is the onset of permanent deformation, which LC2 forbids, so rating / crash force >= safety_factor_yield_LC2 = 1.2: force
+    <= 2,500 N, motor torque <= 2,500 * 0.0025 / (2*pi*0.9) = 1.105 Nm. With 3 Nm the crash force is 2*pi*3*0.9/0.0025 = 6,786
+    N (factor 0.44). With 0.9 Nm it is 2,036 N (factor 1.47). The mounting is unchanged: the same NEMA 23 flange, hole pattern
+    and 6.35 mm shaft as the CAD motor.'
+- id: S3
+  part: socket head cap screw_din_DIN 912 M8 x 80 --- 28N
+  from: 4 x DIN 912 M8 x 80 8.8 galvanised (CAD; author BOM position 2.8)
+  to: 4 x DIN 912 M8 x 110 8.8 galvanised
+  quantity: 4
+  step: S3_socket_head_screw.step
+  geometry:
+    model: 'simplified: plain shank and head cylinders on the original head seat and axis (no thread or socket)'
+    type: socket_head_screw
+    shank_diameter_mm: 8
+    length_mm: 110
+    head_diameter_mm: 13
+    head_height_mm: 8
+    anchor: original head seat and screw axis
+  price_from:
+    amount: 30.06
+    per_quantity: 100
+    pack_size: 200
+    vat: excluded
+    article: '8000165544'
+    url: https://www.egger-online.de
+    accessed: '2026-11-24'
+    status: quoted
+    note: Egger, Reyher DIN 912 8.8 galvanisch verzinkt M8 x 80; EUR 30.06 excl. VAT per 100 (pack 200).
+  price_to:
+    amount: 64.96
+    per_quantity: 100
+    pack_size: 100
+    vat: included
+    vat_rate: 0.19
+    article: '8000165550'
+    url: https://www.egger-online.de/Zylinderschraube-DIN-912-m-Innensechskant-M-8-x-110-8-8-galvanisch-verzinkt-100-Stueck-2951901
+    accessed: '2026-11-24'
+    status: quoted
+    note: Egger, Reyher DIN 912 8.8 galvanisch verzinkt M8 x 110; EUR 64.96 incl. 19% VAT per 100 (pack 100).
+  currency: EUR
+  piece_price_from: 0.3006
+  piece_price_to: 0.5458823529411765
+  conversion: null
+  reason: 'The M8 x 80 rear-clamp screws end 12.0 mm short of the 6.8 mm tapped holes in MotorHalterPlatteIsel (head seat
+    to plate face 92 mm: MotorHalter2 48 mm less its 8 mm counterbore, gap 7 mm, MotorHalter1 45 mm), so the spindle clamps
+    are not attached. M8 x 110 on the same head seat engages 18 mm >= 1.5 d = 12 mm and stays inside the 20 mm plate.'
+- id: S4
+  part: socket head cap screw_din_DIN 912 M5 x 50 --- 22N
+  from: 4 x DIN 912 M5 x 50 8.8 galvanised (CAD, motor mounting)
+  to: 4 x DIN 912 M5 x 65 8.8 galvanised
+  quantity: 4
+  step: S4_socket_head_screw.step
+  geometry:
+    model: 'simplified: plain shank and head cylinders on the original head seat and axis (no thread or socket)'
+    type: socket_head_screw
+    shank_diameter_mm: 5
+    length_mm: 65
+    head_diameter_mm: 8.5
+    head_height_mm: 5
+    anchor: original head seat and screw axis
+  price_from:
+    amount: 8.28
+    per_quantity: 100
+    pack_size: 200
+    vat: included
+    vat_rate: 0.19
+    article: '8000165459'
+    url: https://www.egger-online.de
+    accessed: '2026-11-24'
+    status: quoted
+    note: Egger, Reyher DIN 912 8.8 galvanisch verzinkt M5 x 50; EUR 8.28 incl. 19% VAT per 100 (pack 200).
+  price_to:
+    amount: 17.98
+    per_quantity: 100
+    pack_size: 200
+    vat: excluded
+    article: '8000165462'
+    url: https://www.egger-online.de
+    accessed: '2026-11-24'
+    status: quoted
+    note: Egger, Reyher DIN 912 8.8 galvanisch verzinkt M5 x 65; EUR 17.98 excl. VAT per 100 (pack 200).
+  currency: EUR
+  piece_price_from: 0.06957983193277312
+  piece_price_to: 0.17980000000000002
+  conversion: null
+  reason: 'Measured in the CAD: each M5 x 50 passes the motor flange (5.0 mm) and a Nema23HalterFuss standoff (50.0 mm) and
+    ends 5.0 mm short of the 4.2 mm tap-drill holes in FestLagerBlock (19.5 mm deep, closed above by FestLagerHalterIsel),
+    so the motor is not attached. Head seat to thread 55.0 mm; 1.5 d = 7.5 mm needs a length >= 62.5 mm. The shortest standard
+    DIN 912 length is 65 mm: engagement 10.0 mm <= 19.5 mm thread depth.'
+selection:
+  rule: 'lowest total delta among ACCEPT; tie-break: fewer remaining original findings, then the smaller trim'
+  options: 80
+  accepted: 2
+  delta_made_eur: -0.15839679999973555
+  delta_bought_eur: -8.9761205891038
+  delta_total_eur: -9.134517389103536
+  compliance: F5/F6; G6
